@@ -7,6 +7,7 @@ A documentary-style awareness campaign about illegal garbage burning causing sev
 ## The Problem
 
 Gubbalala experiences dramatic seasonal air quality variation:
+
 - **Summer/Monsoon (July):** AQI 30 - Clean air
 - **Winter (December):** AQI 180-200 - Hazardous (equivalent to smoking 6 cigarettes per day)
 
@@ -15,6 +16,7 @@ The cause: systematic illegal garbage burning in open areas, trapped by winter's
 ## Key Features
 
 ### Documentary Evidence
+
 - **4-Step Visual Narrative:** Garbage Burn Cycle from accumulation to night operations
 - **Photo Documentation:** 10+ evidence photos including smoke plumes, burning sites, and night operations
 - **Image Comparison Slider:** Interactive July vs December AQI comparison using clip-path technique
@@ -24,11 +26,13 @@ The cause: systematic illegal garbage burning in open areas, trapped by winter's
 ### Awareness Focus
 
 **This page is NOT about:**
+
 - Technical AQI monitoring dashboards
 - Personal protective measures
 - Individual action recommendations
 
 **This page IS about:**
+
 - Documenting the systematic nature of the problem
 - Creating undeniable visual proof
 - Building community awareness
@@ -37,6 +41,7 @@ The cause: systematic illegal garbage burning in open areas, trapped by winter's
 ## Design Philosophy
 
 "Toxic Industrial Documentary" aesthetic:
+
 - Bold, brutalist typography (Bebas Neue, Space Mono, Oswald, Anton)
 - High-contrast color palette (toxic ambers, warning reds, smog grays)
 - Film grain overlay animation
@@ -58,12 +63,14 @@ The cause: systematic illegal garbage burning in open areas, trapped by winter's
 ## Technical Details
 
 ### Built With
+
 - HTML5
 - Tailwind CSS (CDN)
 - Vanilla JavaScript (image modal, comparison slider)
 - Google Fonts: Bebas Neue, Space Mono, Noto Sans Kannada, Anton, Oswald
 
 ### SEO Optimization
+
 - Comprehensive meta tags (title, description, keywords)
 - Open Graph tags for social sharing
 - Twitter Card support
@@ -73,12 +80,14 @@ The cause: systematic illegal garbage burning in open areas, trapped by winter's
 - Bilingual language tags
 
 ### Interactive Features
+
 - **Image Comparison Slider:** Custom vanilla JS implementation using CSS clip-path (inspired by react-compare-slider)
 - **Image Modal:** Click to view full-screen with 2x zoom capability
 - **Responsive Design:** Mobile and desktop optimized
 - **Film Grain Effect:** Animated SVG noise overlay
 
 ### Accessibility
+
 - Minimum 14px font size (text-sm) for readability
 - High contrast color schemes
 - Semantic HTML structure
@@ -95,17 +104,20 @@ The cause: systematic illegal garbage burning in open areas, trapped by winter's
 Currently deployed at: **https://bogas04.github.io/gubbalala-aqi**
 
 ### GitHub Pages Setup
+
 1. Push to GitHub repository
 2. Settings → Pages
 3. Source: `main` branch, root (`/`)
 4. Site automatically builds and deploys
 
 ### QR Code Generation
+
 Generate QR codes from the live URL for poster distribution.
 
 ## Local Development
 
 No build process required:
+
 ```bash
 # Simply open in browser
 open index.html
@@ -117,6 +129,7 @@ python -m http.server 8000
 ## Image Assets
 
 All evidence photos stored in `/images/` directory:
+
 - Garbage accumulation photos
 - Burnt waste evidence
 - 6x smoke plume images
@@ -137,6 +150,7 @@ Images optimized to 1080p maximum resolution using macOS `sips` command.
 ## Contributing
 
 This is a community awareness project. Contributions welcome:
+
 - Additional photo evidence
 - Translation improvements
 - Code optimization

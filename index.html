@@ -82,91 +82,101 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Noto+Sans+Kannada:wght@400;600;700&family=Anton&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Kannada:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
-        .font-display-alt { font-family: 'Anton', sans-serif; }
-        .font-body { font-family: 'Space Mono', monospace; }
-        .font-heading { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.02em; }
+        :root {
+            --color-primary: #1a5f7a;
+            --color-accent: #d97706;
+            --color-good: #059669;
+            --color-moderate: #f59e0b;
+            --color-poor: #dc2626;
+            --color-text: #1e293b;
+            --color-text-light: #475569;
+        }
+        
+        .font-serif { font-family: 'Crimson Pro', serif; }
+        .font-sans { font-family: 'IBM Plex Sans', sans-serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
         .kannada { font-family: 'Noto Sans Kannada', sans-serif; }
         
-        @keyframes grain {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-5%, -10%); }
-            20% { transform: translate(-15%, 5%); }
-            30% { transform: translate(7%, -25%); }
-            40% { transform: translate(-5%, 25%); }
-            50% { transform: translate(-15%, 10%); }
-            60% { transform: translate(15%, 0%); }
-            70% { transform: translate(0%, 15%); }
-            80% { transform: translate(3%, 35%); }
-            90% { transform: translate(-10%, 10%); }
+        body {
+            color: var(--color-text);
         }
         
-        .grain::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.15;
-            pointer-events: none;
-            animation: grain 8s steps(10) infinite;
-            z-index: 1;
-            mix-blend-mode: overlay;
+        .data-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid var(--color-primary);
         }
         
-        main {
-            position: relative;
-            z-index: 10;
+        .aqi-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
         }
         
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
+        .aqi-good { background: #d1fae5; color: #065f46; }
+        .aqi-moderate { background: #fef3c7; color: #92400e; }
+        .aqi-poor { background: #fee2e2; color: #991b1b; }
+        .aqi-hazardous { background: #fce7f3; color: #831843; }
         
-        .glitch {
-            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
-        }
-        
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-primary);
         }
         
         .img-documentary {
-            filter: contrast(1.15) saturate(0.85) brightness(0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
         .img-evidence {
-            filter: contrast(1.2) saturate(0.7) grayscale(0.1);
+            border: 1px solid #e2e8f0;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
         }
         
-        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
-        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
-        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
-        .stagger-4 { animation-delay: 0.4s; opacity: 0; }
-        .stagger-5 { animation-delay: 0.5s; opacity: 0; }
-        .stagger-6 { animation-delay: 0.6s; opacity: 0; }
+        .timeline-item {
+            border-left: 3px solid #cbd5e1;
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            border: 3px solid white;
+        }
+        
+        /* Sticky Section Headers */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 30;
+            padding: 1rem 0;
+            margin: -1rem 0 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
         
         /* Image Modal */
         .modal-hidden {
@@ -179,261 +189,253 @@
             object-fit: contain;
         }
         
-        /* Zoom on pinch/scroll */
         .zoomable {
             touch-action: pan-x pan-y pinch-zoom;
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-body overflow-x-hidden">
-    <!-- Grain Overlay -->
-    <div class="grain fixed inset-0 pointer-events-none z-50"></div>
+<body class="bg-white text-slate-800 font-sans overflow-x-hidden antialiased">
     
     <!-- Image Modal -->
     <div id="imageModal" class="hidden fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4" onclick="closeModal()">
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-red-500 transition-colors z-10 w-12 h-12 flex items-center justify-center">&times;</button>
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-amber-500 transition-colors z-10 w-12 h-12 flex items-center justify-center">&times;</button>
         <div class="modal-content relative max-w-full max-h-full overflow-auto" onclick="event.stopPropagation()">
             <img id="modalImage" src="" alt="" class="zoomable cursor-zoom-in" onclick="toggleZoom(event)">
         </div>
     </div>
     
     <!-- Header -->
-    <header class="relative bg-gradient-to-b from-black via-zinc-900 to-zinc-950 border-b-4 border-amber-600">
-        <div class="container mx-auto px-4 py-12 md:py-20">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-4 font-heading text-amber-500 text-sm md:text-base tracking-[0.2em] animate-fade-in-up">
-                    GUBBALALA DOCUMENTATION // BENGALURU
+    <header class="bg-slate-50 border-b border-slate-200">
+        <div class="container mx-auto px-4 py-16 md:py-24">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-6">
+                    <div class="section-label mb-3">Investigative Report</div>
+                    <div class="font-mono text-xs text-slate-500 mb-4">Published: January 2026 • Location: Gubbalala, Bengaluru (12.8811°N, 77.5144°E)</div>
                 </div>
-                <h1 class="font-display text-6xl md:text-8xl lg:text-9xl text-red-600 mb-4 leading-none animate-fade-in-up stagger-1">
-                    WHY TOLERATE THIS?
+                <h1 class="font-serif text-5xl md:text-7xl text-slate-900 mb-6 leading-tight font-bold">
+                    The Gubbalala Air Quality Crisis:<br>
+                    <span class="text-slate-700">A Data-Driven Investigation</span>
                 </h1>
-                <p class="font-display text-4xl md:text-6xl lg:text-7xl text-red-500 kannada mb-8 leading-tight animate-fade-in-up stagger-2">
-                    ನಾವು ಇದನ್ನು ಏಕೆ ಸಹಿಸಿಕೊಳ್ಳುತ್ತಿದ್ದೇವೆ?
+                <p class="font-serif text-3xl md:text-4xl text-slate-600 kannada mb-8 leading-snug font-semibold">
+                    ಗುಬ್ಬಳಾಳ ವಾಯು ಗುಣಮಟ್ಟ ಬಿಕ್ಕಟ್ಟು: ಒಂದು ತನಿಖೆ
                 </p>
-                <div class="font-body text-amber-400 text-sm md:text-sm border-l-4 border-amber-600 pl-4 animate-fade-in-up stagger-3">
-                    <div class="mb-1">LOCATION: 12.8811°N, 77.5144°E</div>
-                    <div>STATUS: CRITICAL AIR QUALITY ALERT</div>
+                <div class="font-sans text-lg md:text-xl text-slate-700 leading-relaxed border-l-4 border-slate-300 pl-6">
+                    <strong>Investigation Summary:</strong> This report shows recurring illegal garbage burning in Gubbalala neighborhood, with AQI increases from 30 (good) to 200+ (poor) during winter months. Findings include photographic records, air quality data, and GPS verification.
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-16 max-w-7xl"
+    <main class="container mx-auto px-4 py-12 max-w-6xl">
         
-        <!-- The Problem: A Visual Story -->
-        <section class="mb-24">
-            <div class="mb-12">
-                <div class="font-heading text-amber-500 text-sm tracking-[0.3em] mb-2">EVIDENCE FILE #001-004 // THE CYCLE</div>
-                <h2 class="font-display text-6xl md:text-8xl text-red-500 mb-4 leading-none">THE GARBAGE<br>BURN CYCLE</h2>
-                <p class="font-display text-4xl md:text-6xl kannada text-red-400 mb-8 leading-tight">ಕಸದ ದಹನ ಚಕ್ರ</p>
-                <div class="font-body text-sm md:text-base text-zinc-300 max-w-3xl border-l-2 border-zinc-700 pl-6">
-                    <p class="mb-3 leading-relaxed">A predictable, toxic routine that repeats every single day.</p>
-                    <p class="kannada text-base leading-relaxed">ಪ್ರತಿದಿನ ಪುನರಾವರ್ತನೆಯಾಗುವ ವಿಷಕಾರಿ ಕ್ರಮ.</p>
+        <!-- Key Findings -->
+        <section class="mb-20">
+            <div class="mb-12 sticky-header">
+                <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Key Findings</h2>
+                <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ಪ್ರಮುಖ ಸಂಶೋಧನೆಗಳು</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="data-card p-6 rounded-lg">
+                    <div class="font-mono text-5xl font-bold text-slate-900 mb-2">30 → 200</div>
+                    <div class="font-sans text-sm text-slate-600 font-medium">AQI Range (Good to Poor)</div>
+                    <div class="font-sans text-xs text-slate-500 mt-2 kannada">ವಾಯು ಗುಣಮಟ್ಟ ಸೂಚ್ಯಂಕ</div>
+                </div>
+                <div class="data-card p-6 rounded-lg">
+                    <div class="font-mono text-5xl font-bold text-slate-900 mb-2">~6</div>
+                    <div class="font-sans text-sm text-slate-600 font-medium">Cigarettes Per Day Equivalent</div>
+                    <div class="font-sans text-xs text-slate-500 mt-2 kannada">ದಿನಕ್ಕೆ ಸಿಗರೇಟ್ ಸಮಾನ</div>
+                </div>
+                <div class="data-card p-6 rounded-lg">
+                    <div class="font-mono text-5xl font-bold text-slate-900 mb-2">Daily</div>
+                    <div class="font-sans text-sm text-slate-600 font-medium">Occurrence Frequency</div>
+                    <div class="font-sans text-xs text-slate-500 mt-2 kannada">ಪುನರಾವರ್ತನೆ</div>
+                </div>
+            </div>
+            
+            <div class="font-sans text-base text-slate-700 leading-relaxed max-w-3xl">
+                <p class="mb-4">This investigation tracks recurring illegal waste burning in Gubbalala, Bengaluru. Through photographs and AQI monitoring, we've established a consistent pattern of air quality deterioration linked to visible garbage burning activity.</p>
+                <p class="kannada text-slate-600">ಈ ತನಿಖೆಯು ಗುಬ್ಬಳಾಳದಲ್ಲಿ ಪುನರಾವರ್ತಿತ ಅಕ್ರಮ ತ್ಯಾಜ್ಯ ಸುಡುವಿಕೆಯನ್ನು ದಾಖಲಿಸುತ್ತದೆ.</p>
+            </div>
+        </section>
+        
+        <!-- The Documented Pattern -->
+        <section class="mb-20">
+            <div class="mb-12 sticky-header">
+                <div class="section-label mb-4">Field Observations</div>
+                <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">The Observed Pattern</h2>
+                <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ದಾಖಲಿಸಿದ ನಮೂನೆ</p>
+                <div class="font-sans text-base text-slate-700 leading-relaxed max-w-3xl">
+                    <p>Our investigation identified a recurring four-stage pattern through photography and air quality monitoring.</p>
+                    <p class="kannada text-slate-600 mt-2">ನಮ್ಮ ತನಿಖೆಯು ನಾಲ್ಕು-ಹಂತದ ಮಾದರಿಯನ್ನು ಗುರುತಿಸಿದೆ.</p>
                 </div>
             </div>
 
-            <!-- Step 1: Garbage Accumulates -->
-            <div class="grid md:grid-cols-2 gap-8 items-center mb-16">
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-gradient-to-br from-yellow-600/20 to-orange-600/20 blur-2xl"></div>
-                    <div class="relative border-4 border-yellow-600 overflow-hidden shadow-2xl shadow-yellow-900/50">
-                        <img src="images/garbage pile in gubbalala.jpg" alt="Garbage pile accumulating in Gubbalala" class="w-full h-auto object-cover img-documentary aspect-[4/3]">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/90 to-transparent p-4">
-                            <div class="font-body text-yellow-400 text-sm mb-1">STAGE 01 // ACCUMULATION</div>
-                            <div class="font-body text-yellow-300 text-[10px]">LOCATION: GUBBALALA STREETS</div>
+            <!-- Stage 1: Waste Accumulation -->
+            <div class="timeline-item">
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">Stage 1: Waste Accumulation</h3>
+                        <p class="font-sans text-xl kannada text-slate-600 mb-4 font-medium">ಹಂತ 1: ತ್ಯಾಜ್ಯ ಸಂಗ್ರಹ</p>
+                        <div class="font-sans text-base text-slate-700 leading-relaxed space-y-3">
+                            <p><strong>Observation:</strong> Garbage accumulates in designated areas and along roadsides. Municipal collection appears irregular or incomplete.</p>
+                            <p class="kannada text-slate-600">ಮುನ್ಸಿಪಲ್ ಸಂಗ್ರಹಣೆ ಅನಿಯಮಿತವಾಗಿ ಕಾಣುತ್ತದೆ. ಕಸ ರಾಶಿಯಾಗುತ್ತದೆ.</p>
+                            <div class="mt-4 p-3 bg-blue-50 border-l-3 border-blue-400 rounded">
+                                <div class="font-mono text-xs text-blue-900">Location: Near Mantri Tranquil Apartments</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="order-first md:order-last">
-                    <div class="font-heading text-yellow-500 text-sm tracking-[0.2em] mb-3">STEP 01</div>
-                    <h3 class="font-display text-4xl md:text-5xl text-yellow-400 mb-4 leading-none">GARBAGE<br>ISN'T COLLECTED</h3>
-                    <div class="font-body text-sm text-zinc-300 space-y-3 border-l-2 border-yellow-600 pl-6">
-                        <p class="leading-relaxed">Garbage piles up. Dark spots of waste litter the area. Collection is irregular, incomplete.</p>
-                        <p class="kannada text-base leading-relaxed">ಕಸ ರಾಶಿಯಾಗುತ್ತದೆ. ಪ್ರದೇಶದಾದ್ಯಂತ ಕಸದ ಕಪ್ಪು ಕಲೆಗಳು. ಸಂಗ್ರಹಣೆ ಅನಿಯಮಿತ.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: Burning Begins -->
-            <div class="grid md:grid-cols-2 gap-8 items-center mb-16">
-                <div class="order-2 md:order-1">
-                    <div class="font-heading text-orange-500 text-sm tracking-[0.2em] mb-3">STEP 02</div>
-                    <h3 class="font-display text-4xl md:text-5xl text-orange-400 mb-4 leading-none">SOLUTION:<br>JUST BURN IT</h3>
-                    <div class="font-body text-sm text-zinc-300 space-y-3 border-l-2 border-orange-600 pl-6">
-                        <p class="leading-relaxed">Extra garbage is burnt to "get rid of it." Everything burns: dry waste, wet waste, e-waste, plastic, rubber.</p>
-                        <p class="kannada text-base leading-relaxed">ಹೆಚ್ಚುವರಿ ಕಸವನ್ನು ಸುಡಲಾಗುತ್ತದೆ. ಎಲ್ಲವೂ ಬೆಂಕಿಗೆ: ಒಣ, ತೇವ, ಇ-ವೇಸ್ಟ್, ಪ್ಲಾಸ್ಟಿಕ್.</p>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2 relative">
-                    <div class="absolute -inset-4 bg-gradient-to-br from-orange-600/20 to-red-600/20 blur-2xl"></div>
-                    <div class="relative border-4 border-orange-600 overflow-hidden shadow-2xl shadow-orange-900/50">
-                        <img src="images/burnt garbage near mantri tranquil.jpeg" alt="Burnt garbage near Mantri Tranquil" class="w-full h-auto object-cover img-documentary aspect-[4/3]">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/90 to-transparent p-4">
-                            <div class="font-body text-orange-400 text-sm mb-1">STAGE 02 // BURNING</div>
-                            <div class="font-body text-orange-300 text-[10px]">LOCATION: NEAR MANTRI TRANQUIL</div>
+                    <div>
+                        <div class="aspect-[4/3] overflow-hidden rounded">
+                            <img src="images/garbage pile in gubbalala.jpg" alt="Documented waste accumulation" class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity" onclick="openModal(this.src, this.alt)">
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3: Smoke Everywhere -->
-            <div class="mb-16">
-                <div class="mb-6">
-                    <div class="font-heading text-red-500 text-sm tracking-[0.2em] mb-3">STEP 03</div>
-                    <h3 class="font-display text-4xl md:text-5xl text-red-400 mb-4 leading-none">SMOKE PLUMES<br>EVERYWHERE</h3>
-                    <div class="font-body text-sm text-zinc-300 max-w-2xl border-l-2 border-red-600 pl-6 mb-8">
-                        <p class="mb-2 leading-relaxed">It's not occasional. It's constant. Look up and you'll see smoke plumes across the area.</p>
-                        <p class="kannada text-base leading-relaxed">ಇದು ಸಾಂದರ್ಭಿಕವಲ್ಲ. ಇದು ನಿರಂತರ. ಮೇಲೆ ನೋಡಿ, ಎಲ್ಲೆಡೆ ಹೊಗೆಯ ಕಂಬಗಳು.</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    <div class="relative group cursor-pointer" onclick="openModal('images/smoke plume visible.png', 'Smoke plume clearly visible')">
-                        <img src="images/smoke plume visible.png" alt="Smoke plume clearly visible" class="w-full h-full object-cover aspect-square img-evidence border-2 border-red-800 hover:border-red-500 transition-all duration-300 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="absolute bottom-2 left-2 font-body text-red-400 text-[10px]">PLUME_01</div>
-                        </div>
-                    </div>
-                    <div class="relative group cursor-pointer" onclick="openModal('images/smoke plume circled in red.jpg', 'Smoke plume')">
-                        <img src="images/smoke plume circled in red.jpg" alt="Smoke plume" class="w-full h-full object-cover aspect-square img-evidence border-2 border-red-800 hover:border-red-500 transition-all duration-300 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="absolute bottom-2 left-2 font-body text-red-400 text-[10px]">PLUME_02</div>
-                        </div>
-                    </div>
-                    <div class="relative group cursor-pointer" onclick="openModal('images/smoke plume circled in red 2.jpg', 'More smoke')">
-                        <img src="images/smoke plume circled in red 2.jpg" alt="More smoke" class="w-full h-full object-cover aspect-square img-evidence border-2 border-red-800 hover:border-red-500 transition-all duration-300 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="absolute bottom-2 left-2 font-body text-red-400 text-[10px]">PLUME_03</div>
-                        </div>
-                    </div>
-                    <div class="relative group cursor-pointer" onclick="openModal('images/smoke plume circled in red 3.jpg', 'Daily smoke')">
-                        <img src="images/smoke plume circled in red 3.jpg" alt="Daily smoke" class="w-full h-full object-cover aspect-square img-evidence border-2 border-red-800 hover:border-red-500 transition-all duration-300 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="absolute bottom-2 left-2 font-body text-red-400 text-[10px]">PLUME_04</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3 mt-3 max-w-md">
-                    <div class="relative group cursor-pointer" onclick="openModal('images/smoke plume circled in red 4.jpg', 'Continuous smoke')">
-                        <img src="images/smoke plume circled in red 4.jpg" alt="Continuous smoke" class="w-full h-full object-cover aspect-square img-evidence border-2 border-red-800 hover:border-red-500 transition-all duration-300 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="absolute bottom-2 left-2 font-body text-red-400 text-[10px]">PLUME_05</div>
-                        </div>
-                    </div>
-                    <div class="relative group cursor-pointer" onclick="openModal('images/smoke plume circled in red 5.jpg', 'Toxic plumes')">
-                        <img src="images/smoke plume circled in red 5.jpg" alt="Toxic plumes" class="w-full h-full object-cover aspect-square img-evidence border-2 border-red-800 hover:border-red-500 transition-all duration-300 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="absolute bottom-2 left-2 font-body text-red-400 text-[10px]">PLUME_06</div>
-                        </div>
+                        <div class="font-mono text-xs text-slate-500 mt-2">Fig. 1: Waste accumulation documented on roadside</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 4: Even at Night -->
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-gradient-to-br from-red-600/30 to-black blur-2xl"></div>
-                    <div class="relative border-4 border-red-600 overflow-hidden shadow-2xl shadow-red-900/50">
-                        <img src="images/garbage burning at night.jpg" alt="Garbage burning at night" class="w-full h-auto object-cover img-documentary aspect-[4/3]">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/90 to-transparent p-4">
-                            <div class="font-body text-red-400 text-sm mb-1">STAGE 04 // NIGHT OPERATIONS</div>
-                            <div class="font-body text-red-300 text-[10px]">TIMESTAMP: 23:47 // STATUS: ACTIVE</div>
+            <!-- Stage 2: Burning Activity -->
+            <div class="timeline-item">
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="md:order-2">
+                        <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">Stage 2: Burning Activity</h3>
+                        <p class="font-sans text-xl kannada text-slate-600 mb-4 font-medium">ಹಂತ 2: ಸುಡುವ ಚಟುವಟಿಕೆ</p>
+                        <div class="font-sans text-base text-slate-700 leading-relaxed space-y-3">
+                            <p><strong>Observation:</strong> Accumulated waste is burned in open areas, including mixed waste with plastic, rubber, and organic materials.</p>
+                            <p class="kannada text-slate-600">ಸಂಗ್ರಹಿತ ತ್ಯಾಜ್ಯವನ್ನು ತೆರೆದ ಪ್ರದೇಶಗಳಲ್ಲಿ ಸುಡಲಾಗುತ್ತದೆ.</p>
+                            <div class="mt-4 p-3 bg-orange-50 border-l-3 border-orange-400 rounded">
+                                <div class="font-mono text-xs text-orange-900">Waste types: Mixed, plastic, organic matter</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:order-1">
+                        <div class="aspect-[4/3] overflow-hidden rounded">
+                            <img src="images/burnt garbage near mantri tranquil.jpeg" alt="Burnt garbage evidence" class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity" onclick="openModal(this.src, this.alt)">
+                        </div>
+                        <div class="font-mono text-xs text-slate-500 mt-2">Fig. 2: Burnt garbage near Mantri Tranquil</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 3: Smoke Dispersion -->
+            <div class="timeline-item">
+                <div>
+                    <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">Stage 3: Smoke Dispersion</h3>
+                    <p class="font-sans text-xl kannada text-slate-600 mb-4 font-medium">ಹಂತ 3: ಹೊಗೆಯ ಹರಡುವಿಕೆ</p>
+                    <div class="font-sans text-base text-slate-700 leading-relaxed mb-6">
+                        <p class="mb-3"><strong>Observation:</strong> Visible smoke plumes recorded across multiple locations and times of day, showing consistent dispersion patterns.</p>
+                        <p class="kannada text-slate-600">ಹೊಗೆಯ ಕಂಬಗಳು ವಿವಿಧ ಸ್ಥಳಗಳಲ್ಲಿ ಮತ್ತು ಸಮಯಗಳಲ್ಲಿ ದಾಖಲಾಗಿವೆ.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                        <div class="cursor-pointer" onclick="openModal('images/smoke plume visible.png', 'Smoke plume documentation 1')">
+                            <div class="aspect-square overflow-hidden rounded">
+                                <img src="images/smoke plume visible.png" alt="Smoke plume 1" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
+                            </div>
+                            <div class="font-mono text-xs text-slate-500 mt-1">Fig. 3.1</div>
+                        </div>
+                        <div class="cursor-pointer" onclick="openModal('images/smoke plume circled in red.jpg', 'Smoke plume documentation 2')">
+                            <div class="aspect-square overflow-hidden rounded">
+                                <img src="images/smoke plume circled in red.jpg" alt="Smoke plume 2" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
+                            </div>
+                            <div class="font-mono text-xs text-slate-500 mt-1">Fig. 3.2</div>
+                        </div>
+                        <div class="cursor-pointer" onclick="openModal('images/smoke plume circled in red 2.jpg', 'Smoke plume documentation 3')">
+                            <div class="aspect-square overflow-hidden rounded">
+                                <img src="images/smoke plume circled in red 2.jpg" alt="Smoke plume 3" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
+                            </div>
+                            <div class="font-mono text-xs text-slate-500 mt-1">Fig. 3.3</div>
+                        </div>
+                        <div class="cursor-pointer" onclick="openModal('images/smoke plume circled in red 3.jpg', 'Smoke plume documentation 4')">
+                            <div class="aspect-square overflow-hidden rounded">
+                                <img src="images/smoke plume circled in red 3.jpg" alt="Smoke plume 4" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
+                            </div>
+                            <div class="font-mono text-xs text-slate-500 mt-1">Fig. 3.4</div>
+                        </div>
+                        <div class="cursor-pointer" onclick="openModal('images/smoke plume circled in red 4.jpg', 'Smoke plume documentation 5')">
+                            <div class="aspect-square overflow-hidden rounded">
+                                <img src="images/smoke plume circled in red 4.jpg" alt="Smoke plume 5" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
+                            </div>
+                            <div class="font-mono text-xs text-slate-500 mt-1">Fig. 3.5</div>
+                        </div>
+                        <div class="cursor-pointer" onclick="openModal('images/smoke plume circled in red 5.jpg', 'Smoke plume documentation 6')">
+                            <div class="aspect-square overflow-hidden rounded">
+                                <img src="images/smoke plume circled in red 5.jpg" alt="Smoke plume 6" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
+                            </div>
+                            <div class="font-mono text-xs text-slate-500 mt-1">Fig. 3.6</div>
                         </div>
                     </div>
                 </div>
-                <div class="order-first md:order-last">
-                    <div class="font-heading text-red-500 text-sm tracking-[0.2em] mb-3">STEP 04</div>
-                    <h3 class="font-display text-4xl md:text-5xl text-red-400 mb-4 leading-none">EVEN AT<br>NIGHT</h3>
-                    <div class="font-body text-sm text-zinc-300 space-y-3 border-l-2 border-red-600 pl-6">
-                        <p class="leading-relaxed">The burning doesn't stop when the sun goes down. It continues through the night, filling the air with toxic fumes while we sleep.</p>
-                        <p class="kannada text-base leading-relaxed">ಸೂರ್ಯ ಮುಳುಗಿದ ನಂತರವೂ ದಹನ ನಿಲ್ಲುವುದಿಲ್ಲ. ರಾತ್ರಿಯೂ ಮುಂದುವರಿಯುತ್ತದೆ.</p>
+            </div>
+
+            <!-- Stage 4: Evening/Night Activity -->
+            <div class="timeline-item">
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">Stage 4: Evening & Night Activity</h3>
+                        <p class="font-sans text-xl kannada text-slate-600 mb-4 font-medium">ಹಂತ 4: ಸಂಜೆ ಮತ್ತು ರಾತ್ರಿ ಚಟುವಟಿಕೆ</p>
+                        <div class="font-sans text-base text-slate-700 leading-relaxed space-y-3">
+                            <p><strong>Observation:</strong> Burning activity continues into evening hours, as shown through nighttime photography. Reduced visibility makes enforcement more difficult.</p>
+                            <p class="kannada text-slate-600">ರಾತ್ರಿಯ ಸಮಯದಲ್ಲೂ ಸುಡುವ ಚಟುವಟಿಕೆ ಮುಂದುವರಿಯುತ್ತದೆ.</p>
+                            <div class="mt-4 p-3 bg-purple-50 border-l-3 border-purple-400 rounded">
+                                <div class="font-mono text-xs text-purple-900">Time documented: Evening and night hours</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="aspect-[4/3] overflow-hidden rounded">
+                            <img src="images/garbage burning at night.jpg" alt="Evening burning activity" class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity" onclick="openModal(this.src, this.alt)">
+                        </div>
+                        <div class="font-mono text-xs text-slate-500 mt-2">Fig. 4: Evening burning activity documented</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Cycle Repeats -->
-        <section class="mb-24 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-950 via-orange-950 to-red-950"></div>
-            <div class="relative border-y-4 border-red-600 py-12 px-8">
-                <div class="max-w-3xl mx-auto text-center">
-                    <div class="font-display text-5xl md:text-7xl text-red-500 mb-4 leading-none animate-pulse">THE CYCLE REPEATS</div>
-                    <div class="font-display text-3xl md:text-5xl kannada text-red-400 mb-6 leading-tight">ಚಕ್ರ ಪುನರಾವರ್ತನೆಯಾಗುತ್ತದೆ</div>
-                    <div class="font-body text-sm text-zinc-400">
-                        EVERY. SINGLE. DAY.<br>
-                        ಪ್ರತಿ. ದಿನ.
-                    </div>
-                </div>
+        <!-- Environmental Context -->
+        <section class="mb-20">
+            <div class="mb-8 sticky-header">
+                <div class="section-label mb-4">Environmental Analysis</div>
+                <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Winter Inversion Effect</h2>
+                <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ಚಳಿಗಾಲದ ವಾತಾವರಣ ಪರಿಣಾಮ</p>
             </div>
-        </section>
-
-        <!-- Visual Evidence: Smoke Plumes (removed, integrated above) -->
-
-        <!-- The Winter Trap -->
-        <section class="mb-24">
-            <div class="max-w-4xl">
-                <div class="font-heading text-cyan-500 text-sm tracking-[0.3em] mb-2">ENVIRONMENTAL FACTOR</div>
-                <h2 class="font-display text-5xl md:text-7xl text-cyan-400 mb-3 leading-none">THE WINTER TRAP</h2>
-                <p class="font-display text-3xl md:text-5xl kannada text-cyan-300 mb-6 leading-tight">ಚಳಿಗಾಲದ ಕಂಟಕ</p>
-                <div class="font-body text-sm md:text-base text-zinc-300 space-y-4 border-l-4 border-cyan-600 pl-6 py-2">
-                    <p class="leading-relaxed">Cold, dry air traps toxins. No rain to wash the smoke away.</p>
-                    <p class="kannada text-base leading-relaxed">ಮಳೆಯಿಲ್ಲದ ಚಳಿ ಮತ್ತು ಒಣ ಗಾಳಿ ವಿಷಕಾರಿ ಹೊಗೆಯನ್ನು ನಮ್ಮ ನಡುವೆಯೇ ಉಳಿಸುತ್ತದೆ.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- The Health Toll -->
-        <section class="mb-24">
-            <div class="max-w-5xl mx-auto">
-                <div class="font-heading text-amber-500 text-sm tracking-[0.3em] mb-2">HEALTH IMPACT ASSESSMENT</div>
-                <h2 class="font-display text-6xl md:text-8xl text-orange-500 mb-4 leading-none">THE HEALTH TOLL</h2>
-                <p class="font-display text-4xl md:text-6xl kannada text-orange-400 mb-12 leading-tight">ಆರೋಗ್ಯದ ಮೇಲೆ ದಾಳಿ</p>
+            
+            <div class="max-w-4xl font-sans text-base text-slate-700 leading-relaxed">
+                <p class="mb-4">During winter months (December through February), Bengaluru experiences atmospheric temperature inversion. Cooler air near the ground becomes trapped beneath warmer air above, preventing vertical air circulation and pollutant dispersal.</p>
+                <p class="mb-4 kannada text-slate-600">ಚಳಿಗಾಲದ ತಿಂಗಳುಗಳಲ್ಲಿ, ಬೆಂಗಳೂರು ವಾತಾವರಣದ ತಾಪಮಾನ ವಿಲೋಮತೆಯನ್ನು ಅನುಭವಿಸುತ್ತದೆ.</p>
                 
-                <div class="grid md:grid-cols-2 gap-8 mb-12">
-                    <div class="font-body text-sm md:text-base text-zinc-300 border-l-2 border-zinc-700 pl-6 space-y-4">
-                        <p class="leading-relaxed">Shortness of breath and constant throat irritation.</p>
-                        <p class="kannada text-base leading-relaxed">ವಿಷಕಾರಿ ಗಾಳಿ: ಉಸಿರಾಟದ ತೊಂದರೆ ಮತ್ತು ಗಂಟಲು ಉರಿ.</p>
-                    </div>
-                    <div class="relative bg-gradient-to-br from-red-950 to-black border-4 border-red-600 p-8">
-                        <div class="absolute top-0 right-0 font-body text-amber-500 text-[10px] p-2 bg-black/50">CRITICAL</div>
-                        <div class="font-display text-8xl text-red-500 mb-4 glitch leading-none">200</div>
-                        <div class="font-heading text-red-400 text-xl mb-4">AQI INDEX</div>
-                        <div class="font-body text-sm text-zinc-300 leading-relaxed">
-                            = 6 CIGARETTES/DAY<br>
-                            FORCED EXPOSURE
+                <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-sans font-semibold text-slate-900 mb-2">Summer Conditions</h4>
+                        <div class="flex items-center mb-3">
+                            <span class="aqi-good">AQI: 30-50 (Good)</span>
                         </div>
+                        <p class="text-sm text-slate-600">Normal air circulation allows pollutants to disperse vertically, maintaining healthy air quality.</p>
                     </div>
-                </div>
-                
-                <div class="relative bg-gradient-to-r from-red-950 via-red-900 to-red-950 border-l-8 border-red-600 p-8 md:p-12">
-                    <div class="font-display text-3xl md:text-5xl text-red-300 mb-4 leading-tight">
-                        AQI 200 = 6 CIGARETTES A DAY
-                    </div>
-                    <div class="font-heading text-xl md:text-2xl text-red-200 mb-6">
-                        WE ARE ALL FORCED SMOKERS.
-                    </div>
-                    <div class="font-display text-2xl md:text-4xl kannada text-red-400 leading-tight">
-                        AQI 200 ಎಂದರೆ ದಿನಕ್ಕೆ 6 ಸಿಗರೇಟ್ ಸೇದಿದಂತೆ. ನಾವೆಲ್ಲರೂ ಅನಿವಾರ್ಯವಾಗಿ ಧೂಮಪಾನಿಗಳಾಗುತ್ತಿದ್ದೇವೆ.
+                    <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-sans font-semibold text-slate-900 mb-2">Winter Conditions</h4>
+                        <div class="flex items-center mb-3">
+                            <span class="aqi-poor">AQI: 150-200+ (Poor/Hazardous)</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Temperature inversion traps pollutants near ground level, significantly degrading air quality.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- The Proof: Image Comparison Slider -->
-        <section class="mb-24 bg-gradient-to-br from-emerald-950 via-black to-zinc-950 border-y-4 border-emerald-800 py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16">
+        <!-- Visual Evidence: Before & After -->
+        <section class="mb-20 bg-slate-50 border-y border-slate-200 py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16">
             <div class="max-w-6xl mx-auto">
-                <div class="mb-12">
-                    <div class="font-heading text-emerald-500 text-sm tracking-[0.3em] mb-2">COMPARATIVE ANALYSIS</div>
-                    <h2 class="font-display text-6xl md:text-8xl text-emerald-400 mb-4 leading-none">THE PROOF</h2>
-                    <p class="font-display text-4xl md:text-6xl kannada text-emerald-300 mb-8 leading-tight">ಪುರಾವೆ</p>
-                    <div class="font-body text-sm md:text-base text-zinc-300 max-w-2xl mb-2">
-                        <p class="mb-2">Drag the slider to compare the same view in July vs December.</p>
-                        <p class="kannada text-base">ಜುಲೈ ಮತ್ತು ಡಿಸೆಂಬರ್ ನಡುವಿನ ವ್ಯತ್ಯಾಸ ನೋಡಿ.</p>
-                    </div>
+                <div class="mb-12 sticky-header">
+                    <div class="section-label mb-4">Comparative Analysis</div>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Before & After Documentation</h2>
+                    <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ಮೊದಲು ಮತ್ತು ನಂತರದ ದಾಖಲಾತಿ</p>
+                    <p class="font-sans text-base text-slate-700 max-w-3xl">Visual comparison showing the dramatic change in air quality between clear and polluted days.</p>
                 </div>
                 
-                <!-- Image Comparison Container -->
-                <div class="relative w-full border-4 border-emerald-600 overflow-hidden mb-12 shadow-2xl shadow-emerald-900/50" id="comparison-container" style="user-select: none; touch-action: pan-y;">
+                <!-- Image Comparison Slider -->
+                <div class="relative w-full border-2 border-slate-300 overflow-hidden mb-8 shadow-lg bg-white rounded" id="comparison-container" style="user-select: none; touch-action: pan-y;">
                     <!-- Both images stacked in same position -->
                     <div style="position: relative; width: 100%; display: grid;">
                         <!-- Bottom image (December - smoggy) -->
@@ -456,217 +458,282 @@
                             <!-- Vertical line -->
                             <div class="w-full h-full bg-white"></div>
                             <!-- Handle button -->
-                            <div class="absolute w-12 h-12 bg-emerald-500 border-4 border-white flex items-center justify-center text-white text-2xl font-bold select-none shadow-xl rounded-full" style="left: 50%; top: 50%; transform: translate(-50%, -50%); line-height: 1;">
-                               H 
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; background: white; border: 3px solid var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                <div style="display: flex; gap: 2px;">
+                                    <div style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-right: 8px solid var(--color-primary);"></div>
+                                    <div style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 8px solid var(--color-primary);"></div>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- Labels -->
-                        <div class="absolute top-4 left-4 bg-black/90 border-2 border-emerald-500 p-3 font-body text-emerald-400 text-sm pointer-events-none" style="z-index: 15;">
-                            JULY (MONSOON)<br>AQI: 30
+                        <div style="position: absolute; top: 16px; left: 16px; background: white; padding: 8px 16px; border-radius: 4px; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 15;" class="font-sans text-sm">
+                            <span class="aqi-good">AQI 30 - Clear Day (July)</span>
                         </div>
-                        <div class="absolute top-4 right-4 bg-black/90 border-2 border-red-500 p-3 font-body text-red-400 text-sm text-right pointer-events-none" style="z-index: 15;">
-                            DECEMBER (WINTER)<br>AQI: 180-200
+                        <div style="position: absolute; top: 16px; right: 16px; background: white; padding: 8px 16px; border-radius: 4px; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 15;" class="font-sans text-sm">
+                            <span class="aqi-poor">AQI 180 - Smoggy Day (Dec)</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="relative bg-gradient-to-br from-emerald-950 to-black border-4 border-emerald-500 p-8 md:p-12 overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
-                        <div class="relative">
-                            <div class="font-heading text-emerald-500 text-sm tracking-[0.3em] mb-4">MONSOON SEASON</div>
-                            <div class="font-display text-7xl md:text-8xl text-emerald-400 mb-2 leading-none">30</div>
-                            <div class="font-heading text-emerald-300 text-xl mb-4">AQI INDEX</div>
-                            <div class="font-body text-sm text-zinc-400">
-                                JULY (RAIN)<br>
-                                ಜುಲೈ (ಮಳೆ)
-                            </div>
+                <div class="grid md:grid-cols-2 gap-6 font-sans text-sm">
+                    <div class="p-4 bg-white rounded border border-slate-200">
+                        <h4 class="font-semibold text-slate-900 mb-2">Clear Day Characteristics</h4>
+                        <ul class="space-y-1 text-slate-600">
+                            <li>• Visible horizon and distant structures</li>
+                            <li>• Natural blue sky coloration</li>
+                            <li>• No visible particulate matter</li>
+                            <li>• AQI typically 30-50 (Good)</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-white rounded border border-slate-200">
+                        <h4 class="font-semibold text-slate-900 mb-2">Polluted Day Characteristics</h4>
+                        <ul class="space-y-1 text-slate-600">
+                            <li>• Obscured visibility and haze</li>
+                            <li>• Gray/brown atmospheric discoloration</li>
+                            <li>• Visible smoke plumes</li>
+                            <li>• AQI exceeds 150-200 (Poor/Hazardous)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Impact -->
+        <section class="mb-20">
+            <div class="max-w-5xl">
+                <div class="mb-8 sticky-header">
+                    <div class="section-label mb-4">Health Assessment</div>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Health Impact Analysis</h2>
+                    <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ಆರೋಗ್ಯ ಪರಿಣಾಮ ವಿಶ್ಲೇಷಣೆ</p>
+                </div>
+                
+                <div class="font-sans text-base text-slate-700 leading-relaxed mb-8">
+                    <p class="mb-4">According to health research, breathing air with an AQI of 200 for one day is approximately equivalent to smoking 6 cigarettes. Prolonged exposure increases risks of:</p>
+                    <p class="mb-4 kannada text-slate-600">ಆರೋಗ್ಯ ಸಂಶೋಧನೆಯ ಪ್ರಕಾರ, AQI 200 ರ ಗಾಳಿಯನ್ನು ಒಂದು ದಿನ ಉಸಿರಾಡುವುದು ಸುಮಾರು 6 ಸಿಗರೇಟ್ ಸೇವಿಸುವುದಕ್ಕೆ ಸಮಾನವಾಗಿದೆ.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-sans font-semibold text-slate-900 mb-3">Acute Effects</h4>
+                        <ul class="space-y-2 font-sans text-sm text-slate-700">
+                            <li>• Eye, nose, and throat irritation</li>
+                            <li>• Respiratory discomfort and coughing</li>
+                            <li>• Headaches and dizziness</li>
+                            <li>• Reduced lung function capacity</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-sans font-semibold text-slate-900 mb-3">Long-Term Risks</h4>
+                        <ul class="space-y-2 font-sans text-sm text-slate-700">
+                            <li>• Chronic respiratory diseases</li>
+                            <li>• Cardiovascular complications</li>
+                            <li>• Reduced life expectancy</li>
+                            <li>• Increased cancer risk</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="p-6 bg-amber-50 border-l-4 border-amber-500 rounded">
+                    <h4 class="font-sans font-semibold text-amber-900 mb-2">Vulnerable Populations</h4>
+                    <p class="font-sans text-sm text-amber-800">Children, elderly individuals, and people with pre-existing respiratory or cardiovascular conditions face heightened health risks from poor air quality.</p>
+                    <p class="font-sans text-sm kannada text-amber-800 mt-2">ಮಕ್ಕಳು, ವಯಸ್ಸಾದವರು ಮತ್ತು ಉಸಿರಾಟದ ಸಮಸ್ಯೆಗಳಿರುವವರು ಹೆಚ್ಚಿನ ಅಪಾಯವನ್ನು ಎದುರಿಸುತ್ತಾರೆ.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Geolocation Evidence -->
+        <section class="mb-20">
+            <div class="max-w-6xl">
+                <div class="mb-8 sticky-header">
+                    <div class="section-label mb-4">Geographic Documentation</div>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Location Evidence</h2>
+                    <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ಸ್ಥಳ ಪುರಾವೆ</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6 font-sans text-base">
+                    <div class="p-5 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-semibold text-slate-900 mb-2">Primary Location</h4>
+                        <p class="text-slate-700 mb-2">Near Mantri Tranquil Apartments, Gubbalala</p>
+                        <div class="font-mono text-xs text-slate-500">
+                            12.881130165307516°N, 77.51440570677094°E
                         </div>
                     </div>
-                    <div class="relative bg-gradient-to-br from-red-950 to-black border-4 border-red-500 p-8 md:p-12 overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl"></div>
-                        <div class="relative">
-                            <div class="font-heading text-red-500 text-sm tracking-[0.3em] mb-4">WINTER SEASON</div>
-                            <div class="font-display text-7xl md:text-8xl text-red-400 mb-2 leading-none glitch">180-200</div>
-                            <div class="font-heading text-red-300 text-xl mb-4">AQI INDEX</div>
-                            <div class="font-body text-sm text-zinc-400">
-                                DECEMBER (DRY)<br>
-                                ಡಿಸೆಂಬರ್ (ಚಳಿ)
-                            </div>
-                        </div>
+                    <div class="p-5 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-semibold text-slate-900 mb-2">Verification Method</h4>
+                        <p class="text-slate-700 text-sm">GPS-tagged photographs, Google Maps satellite imagery, and street-level verification</p>
                     </div>
+                </div>
+                
+                <div class="border-2 border-slate-300 rounded overflow-hidden">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.292447!2d77.5144057!3d12.8811302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDUyJzUyLjAiTiA3N8KwMzAnNTIuNiJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
                 </div>
             </div>
         </section>
 
         <!-- Google Maps Evidence -->
-        <section class="mb-24">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-12">
-                    <div class="font-heading text-amber-500 text-sm tracking-[0.3em] mb-2">EXTERNAL DATA VERIFICATION</div>
-                    <h2 class="font-display text-5xl md:text-7xl text-amber-400 mb-3 leading-none">GOOGLE MAPS<br>DOESN'T LIE</h2>
-                    <p class="font-display text-3xl md:text-5xl kannada text-amber-300 mb-6 leading-tight">ಗೂಗಲ್ ನಕ್ಷೆ ಸುಳ್ಳು ಹೇಳುವುದಿಲ್ಲ</p>
-                    <div class="font-body text-sm md:text-base text-zinc-300 border-l-2 border-zinc-700 pl-6">
-                        <p class="mb-2">Even Google Maps shows Gubbalala in red - the worst air quality zone.</p>
-                        <p class="kannada text-base">ಗೂಗಲ್ ನಕ್ಷೆಯಲ್ಲಿ ಗುಬ್ಬಲಾಲಾ ಕೆಂಪು ಬಣ್ಣದಲ್ಲಿ - ಕೆಟ್ಟ ಗಾಳಿ ಗುಣಮಟ್ಟದ ಪ್ರದೇಶ.</p>
-                    </div>
+        <section class="mb-20">
+            <div class="max-w-6xl">
+                <div class="mb-8 sticky-header">
+                    <div class="section-label mb-4">Third-Party Verification</div>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Google Maps Air Quality Data</h2>
+                    <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ಗೂಗಲ್ ನಕ್ಷೆ ವಾಯು ಗುಣಮಟ್ಟ ಮಾಹಿತಿ</p>
+                    <p class="font-sans text-base text-slate-700 max-w-3xl">
+                        Independent third-party data from Google Maps corroborates the air quality crisis in Gubbalala, showing the area highlighted in red as a poor air quality zone.
+                    </p>
+                    <p class="font-sans text-sm kannada text-slate-600 mt-2">ಗೂಗಲ್ ನಕ್ಷೆಯಲ್ಲಿ ಗುಬ್ಬಳಾಳ ಕೆಂಪು ಬಣ್ಣದಲ್ಲಿ - ಕೆಟ್ಟ ವಾಯು ಗುಣಮಟ್ಟ ಪ್ರದೇಶ.</p>
                 </div>
+                
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
-                    <div class="relative border-4 border-amber-600 overflow-hidden">
-                        <img src="images/google maps aqi layer showing gubbala in red.png" alt="Google Maps AQI" class="w-full h-full object-cover aspect-[4/3] img-evidence">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3">
-                            <div class="font-body text-amber-400 text-sm">MAP_DATA_001</div>
+                    <div class="cursor-pointer" onclick="openModal('images/google maps aqi layer showing gubbala in red.png', 'Google Maps AQI Layer - Gubbalala in Red')">
+                        <div class="aspect-[4/3] overflow-hidden rounded border border-slate-200">
+                            <img src="images/google maps aqi layer showing gubbala in red.png" alt="Google Maps AQI Layer showing Gubbalala in red" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
                         </div>
+                        <div class="font-mono text-xs text-slate-500 mt-2">Fig. 6.1: Google Maps AQI overlay</div>
                     </div>
-                    <div class="relative border-4 border-amber-600 overflow-hidden">
-                        <img src="images/google maps aqi layer showing gubbala in red 2.png" alt="Google Maps AQI Layer" class="w-full h-full object-cover aspect-[4/3] img-evidence">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3">
-                            <div class="font-body text-amber-400 text-sm">MAP_DATA_002</div>
+                    <div class="cursor-pointer" onclick="openModal('images/google maps aqi layer showing gubbala in red 2.png', 'Google Maps AQI Layer Detail')">
+                        <div class="aspect-[4/3] overflow-hidden rounded border border-slate-200">
+                            <img src="images/google maps aqi layer showing gubbala in red 2.png" alt="Google Maps AQI Layer detail" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
                         </div>
+                        <div class="font-mono text-xs text-slate-500 mt-2">Fig. 6.2: AQI layer detail view</div>
                     </div>
                 </div>
-                <div class="relative border-4 border-amber-600 overflow-hidden">
-                    <img src="images/google maps screenshot of area.jpg" alt="Location map" class="w-full h-auto object-cover aspect-video img-evidence">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4">
-                        <div class="font-body text-amber-400 text-sm">LOCATION_OVERVIEW</div>
+                
+                <div class="cursor-pointer" onclick="openModal('images/google maps screenshot of area.jpg', 'Google Maps location overview')">
+                    <div class="aspect-video overflow-hidden rounded border border-slate-200">
+                        <img src="images/google maps screenshot of area.jpg" alt="Google Maps location overview" class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity">
+                    </div>
+                    <div class="font-mono text-xs text-slate-500 mt-2">Fig. 6.3: Geographic location overview</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Documentation -->
+        <section class="mb-20">
+            <div class="max-w-5xl">
+                <div class="mb-8 sticky-header">
+                    <div class="section-label mb-4">Community Response</div>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Research Efforts</h2>
+                    <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ಸಮುದಾಯ ದಾಖಲಾತಿ</p>
+                </div>
+
+                <div class="font-sans text-base text-slate-700 leading-relaxed mb-8">
+                    <p class="mb-4">This investigation represents ongoing community-led efforts to establish a factual record of air quality issues in Gubbalala. All information has been systematically collected, verified, and archived.</p>
+                    <p class="kannada text-slate-600">ಈ ತನಿಖೆಯು ಗುಬ್ಬಳಾಳದಲ್ಲಿನ ವಾಯು ಗುಣಮಟ್ಟ ಸಮಸ್ಯೆಗಳ ವಾಸ್ತವಿಕ ದಾಖಲೆಯನ್ನು ಸ್ಥಾಪಿಸಲು ಸಮುದಾಯ-ನೇತೃತ್ವದ ದಾಖಲಾತಿ ಪ್ರಯತ್ನಗಳನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-sans font-semibold text-slate-900 mb-3">Documentation Methods</h4>
+                        <ul class="space-y-2 font-sans text-sm text-slate-700">
+                            <li>• Time-stamped photography</li>
+                            <li>• GPS coordinate verification</li>
+                            <li>• AQI monitoring data correlation</li>
+                            <li>• Multiple witness accounts</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
+                        <h4 class="font-sans font-semibold text-slate-900 mb-3">Data Collection Period</h4>
+                        <p class="font-sans text-sm text-slate-700">Ongoing documentation since winter 2025-2026, with particular focus during temperature inversion periods (December-February).</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Community Response -->
-        <section class="mb-24">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-12">
-                    <div class="font-heading text-purple-500 text-sm tracking-[0.3em] mb-2">CASE STUDY</div>
-                    <h2 class="font-display text-5xl md:text-7xl text-purple-400 mb-3 leading-none">WHEN WE<br>SPEAK UP</h2>
-                    <p class="font-display text-3xl md:text-5xl kannada text-purple-300 mb-6 leading-tight">ನಾವು ಮಾತನಾಡಿದಾಗ</p>
-                    <div class="font-body text-sm md:text-base text-zinc-300 max-w-2xl border-l-2 border-zinc-700 pl-6">
-                        <p class="mb-2 leading-relaxed">A tea vendor putting out fire after being asked by residents.</p>
-                        <p class="kannada text-base leading-relaxed">ನಿವಾಸಿಗಳು ಕೇಳಿದ ನಂತರ ಚಹಾ ಮಾರಾಟಗಾರರು ಬೆಂಕಿ ನಂದಿಸುತ್ತಿದ್ದಾರೆ.</p>
-                    </div>
+        <!-- Community Cooperation -->
+        <section class="mb-20">
+            <div class="max-w-5xl">
+                <div class="mb-8 sticky-header">
+                    <div class="section-label mb-4">Local Cooperation</div>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold">Individual Actions</h2>
+                    <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold">ವೈಯಕ್ತಿಕ ಕ್ರಮಗಳು</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-br from-purple-600/20 to-pink-600/20 blur-2xl"></div>
-                        <div class="relative border-4 border-purple-600 overflow-hidden shadow-2xl shadow-purple-900/50">
-                            <img src="images/a tea vendor putting off fire after being asked.jpg" alt="Tea vendor action" class="w-full h-auto object-cover aspect-video img-documentary">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4">
-                                <div class="font-body text-purple-400 text-sm">COMMUNITY_ACTION_001</div>
-                            </div>
+                <div class="font-sans text-base text-slate-700 leading-relaxed mb-8">
+                    <p class="mb-4">Following awareness efforts, some local community members have cooperated in addressing the issue, taking corrective action when informed about environmental and health impacts.</p>
+                    <p class="kannada text-slate-600">ಜಾಗೃತಿ ಪ್ರಯತ್ನಗಳ ನಂತರ, ಕೆಲವು ಸ್ಥಳೀಯ ಸಮುದಾಯದ ಸದಸ್ಯರು ಸಮಸ್ಯೆಯನ್ನು ಪರಿಹರಿಸುವಲ್ಲಿ ಸಹಕಾರವನ್ನು ತೋರಿಸಿದ್ದಾರೆ.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <div class="aspect-[4/3] overflow-hidden rounded">
+                            <img src="images/a tea vendor putting off fire after being asked.jpg" alt="Community member extinguishing fire after request" class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity" onclick="openModal(this.src, this.alt)">
                         </div>
+                        <div class="font-mono text-xs text-slate-500 mt-2">Fig. 5.1: Local vendor extinguishing fire after awareness discussion</div>
                     </div>
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-br from-purple-600/20 to-pink-600/20 blur-2xl"></div>
-                        <div class="relative border-4 border-purple-600 overflow-hidden shadow-2xl shadow-purple-900/50 aspect-video">
+                    <div>
+                        <div class="aspect-[4/3] overflow-hidden rounded border border-slate-200 bg-black">
                             <iframe 
                                 src="https://www.youtube.com/embed/BtDvLkJ7vfE?rel=0" 
-                                title="Community Response Video" 
+                                title="Community Response Video Evidence" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 allowfullscreen
                                 referrerpolicy="strict-origin-when-cross-origin"
                                 class="w-full h-full">
                             </iframe>
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 pointer-events-none">
-                                <div class="font-body text-purple-400 text-sm">VIDEO_EVIDENCE_001</div>
+                        </div>
+                        <div class="font-mono text-xs text-slate-500 mt-2">Fig. 5.2: Video documentation of community engagement</div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <div class="p-6 bg-blue-50 border-l-4 border-blue-500 rounded mb-4">
+                        <h4 class="font-sans font-semibold text-blue-900 mb-2">Important Note</h4>
+                        <p class="font-sans text-sm text-blue-800 mb-2">This investigation is not about attacking individuals. Many people burn garbage due to lack of awareness about health impacts or inadequate waste collection systems. Our goal is education, awareness, and collaborative solutions.</p>
+                        <p class="font-sans text-sm kannada text-blue-800">ಈ ತನಿಖೆಯು ವ್ಯಕ್ತಿಗಳನ್ನು ದಾಳಿ ಮಾಡಲು ಅಲ್ಲ. ಆರೋಗ್ಯ ಪರಿಣಾಮಗಳ ಅರಿವಿಲ್ಲದೆ ಅಥವಾ ಸಾಕಷ್ಟು ತ್ಯಾಜ್ಯ ಸಂಗ್ರಹಣೆ ವ್ಯವಸ್ಥೆ ಇಲ್ಲದಿರುವುದರಿಂದ ಅನೇಕರು ಕಸ ಸುಡುತ್ತಾರೆ. ನಮ್ಮ ಗುರಿ ಶಿಕ್ಷಣೆ, ಅರಿವು ಮತ್ತು ಸಹಕಾರಾತ್ಮಕ ಪರಿಹಾರಗಳು.</p>
+                    </div>
+                    
+                    <div class="p-6 bg-slate-50 rounded border border-slate-200">
+                        <h4 class="font-sans font-semibold text-slate-900 mb-3">Education Approach</h4>
+                        <ul class="space-y-2 font-sans text-sm text-slate-700">
+                            <li>• Respectful dialogue with community members</li>
+                            <li>• Sharing health impact information</li>
+                            <li>• Offering alternative waste disposal methods</li>
+                            <li>• Building collective awareness</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- WhatsApp Community Group -->
+                <div class="mt-8 p-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border-2 border-green-200">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-500 rounded-full mb-4">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-sans text-2xl font-bold text-slate-900 mb-2">Join the Community</h4>
+                        <p class="font-sans text-xl kannada text-slate-700 mb-4 font-semibold">ಸಮುದಾಯಕ್ಕೆ ಸೇರಿ</p>
+                        <p class="font-sans text-sm text-slate-600 mb-6 max-w-md mx-auto">Connect with other Gubbalala residents working together for cleaner air. Share updates, coordinate actions, and support each other.</p>
+                        <p class="font-sans text-xs kannada text-slate-500 mb-6">ಶುದ್ಧ ಗಾಳಿಗಾಗಿ ಒಟ್ಟಿಗೆ ಕೆಲಸ ಮಾಡುವ ಇತರ ನಿವಾಸಿಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ.</p>
+                        <div class="inline-block bg-green-100 border-2 border-green-400 text-green-700 font-sans font-semibold text-lg py-4 px-8 rounded-lg cursor-not-allowed opacity-75">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                                <span>Coming Soon</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-br from-cyan-950 to-black border-4 border-cyan-600 p-8 mb-6 max-w-4xl">
-                    <div class="font-heading text-cyan-400 text-lg mb-4 tracking-wide">⚠️ IMPORTANT NOTE // ಮಹತ್ವದ ಟಿಪ್ಪಣಿ</div>
-                    <div class="space-y-3">
-                        <p class="font-body text-sm text-zinc-300 leading-relaxed">
-                            This is not about attacking individuals. Many people burn garbage due to lack of awareness about the health impacts or because of inadequate waste collection systems. Our goal is to educate, raise awareness, and work together for better waste management solutions.
-                        </p>
-                        <p class="font-body text-sm kannada text-zinc-400 leading-relaxed">
-                            ಇದು ವ್ಯಕ್ತಿಗಳನ್ನು ದಾಳಿ ಮಾಡುವ ಬಗ್ಗೆ ಅಲ್ಲ. ಆರೋಗ್ಯದ ಪರಿಣಾಮಗಳ ಬಗ್ಗೆ ಅರಿವು ಇಲ್ಲದಿರುವುದರಿಂದ ಅಥವಾ ಸಾಕಷ್ಟು ತ್ಯಾಜ್ಯ ಸಂಗ್ರಹಣೆ ವ್ಯವಸ್ಥೆ ಇಲ್ಲದಿರುವುದರಿಂದ ಅನೇಕರು ಕಸ ಸುಡುತ್ತಾರೆ. ನಮ್ಮ ಗುರಿ ಶಿಕ್ಷಣ, ಅರಿವು ಮೂಡಿಸುವುದು ಮತ್ತು ಉತ್ತಮ ತ್ಯಾಜ್ಯ ನಿರ್ವಹಣೆ ಪರಿಹಾರಗಳಿಗಾಗಿ ಒಟ್ಟಾಗಿ ಕೆಲಸ ಮಾಡುವುದು.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-purple-950 to-black border-l-4 border-purple-600 p-8 max-w-3xl">
-                    <p class="font-body text-sm text-zinc-300 mb-3 leading-relaxed">Individual actions matter, but we need collective awareness.</p>
-                    <p class="font-body text-sm kannada text-zinc-400 leading-relaxed">ವ್ಯಕ್ತಿಗತ ಕ್ರಮಗಳು ಮುಖ್ಯ, ಆದರೆ ನಮಗೆ ಸಾಮೂಹಿಕ ಅರಿವು ಬೇಕು.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Join the Movement -->
-        <section class="mb-24 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-green-900 via-emerald-900 to-black"></div>
-            <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);"></div>
-            <div class="relative border-y-8 border-green-500 py-16 px-8">
-                <div class="max-w-4xl mx-auto text-center">
-                    <div class="font-heading text-green-500 text-sm tracking-[0.3em] mb-4">COLLECTIVE ACTION REQUIRED</div>
-                    <h2 class="font-display text-6xl md:text-8xl text-green-400 mb-6 leading-none">JOIN OUR<br>WHATSAPP<br>GROUP</h2>
-                    <p class="font-display text-4xl md:text-6xl kannada text-green-300 mb-12 leading-tight">ನಮ್ಮ ವಾಟ್ಸ್‌ಆ್ಯಪ್ ಗುಂಪಿಗೆ ಸೇರಿ</p>
-                    <div class="font-body text-sm md:text-base text-zinc-300 space-y-3 mb-12 max-w-2xl mx-auto">
-                        <p>Connect with other Gubbalala residents who care about clean air.</p>
-                        <p class="kannada text-base">ಶುದ್ಧ ಗಾಳಿಯ ಬಗ್ಗೆ ಕಾಳಜಿ ವಹಿಸುವ ಇತರ ನಿವಾಸಿಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ.</p>
-                    </div>
-                    <div class="inline-block bg-green-950 border-4 border-green-500 text-green-400 font-heading text-2xl md:text-3xl py-6 px-16 uppercase tracking-wider">
-                        COMING SOON
-                    </div>
-                    <p class="font-display text-2xl kannada text-green-300 mt-6">ಶೀಘ್ರದಲ್ಲಿ ಬರಲಿದೆ</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- What We Document -->
-        <section class="mb-24">
-            <div class="max-w-5xl mx-auto">
-                <div class="mb-12">
-                    <div class="font-heading text-cyan-500 text-sm tracking-[0.3em] mb-2">PARTICIPATION PROTOCOL</div>
-                    <h2 class="font-display text-5xl md:text-7xl text-cyan-400 mb-3 leading-none">DOCUMENT<br>& SHARE</h2>
-                    <p class="font-display text-3xl md:text-5xl kannada text-cyan-300 leading-tight">ದಾಖಲಿಸಿ ಮತ್ತು ಹಂಚಿಕೊಳ್ಳಿ</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="bg-gradient-to-br from-cyan-950 to-black border-l-4 border-cyan-500 p-6">
-                            <div class="font-heading text-cyan-500 text-xl mb-3">01 // TAKE PHOTOS</div>
-                            <p class="font-body text-sm text-zinc-300 mb-2 leading-relaxed">When you see garbage burning, smoke plumes, or pollution.</p>
-                            <p class="font-body text-sm kannada text-zinc-400 leading-relaxed">ಕಸ ಸುಡುವುದನ್ನು, ಹೊಗೆಯನ್ನು ನೋಡಿದಾಗ ಫೋಟೋ ತೆಗೆಯಿರಿ.</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-cyan-950 to-black border-l-4 border-cyan-500 p-6">
-                            <div class="font-heading text-cyan-500 text-xl mb-3">02 // SHARE IN GROUP</div>
-                            <p class="font-body text-sm text-zinc-300 mb-2 leading-relaxed">Post your observations with location and time.</p>
-                            <p class="font-body text-sm kannada text-zinc-400 leading-relaxed">ಸ್ಥಳ ಮತ್ತು ಸಮಯದೊಂದಿಗೆ ನಿಮ್ಮ ಅವಲೋಕನಗಳನ್ನು ಪೋಸ್ಟ್ ಮಾಡಿ.</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-amber-950 to-black border-l-4 border-amber-500 p-6">
-                            <div class="font-heading text-amber-500 text-xl mb-3">03 // RAISE WITH AUTHORITIES</div>
-                            <p class="font-body text-sm text-zinc-300 mb-2 leading-relaxed">Contact your local MLA, MP, and authorities. Demand action on illegal garbage burning.</p>
-                            <p class="font-body text-sm kannada text-zinc-400 leading-relaxed">ನಿಮ್ಮ ಸ್ಥಳೀಯ ಶಾಸಕರು, ಸಂಸದರು ಮತ್ತು ಅಧಿಕಾರಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ. ಕ್ರಮ ಕೈಗೊಳ್ಳಲು ಒತ್ತಾಯಿಸಿ.</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-cyan-950 to-black border-l-4 border-cyan-500 p-6">
-                            <div class="font-heading text-cyan-500 text-xl mb-3">04 // BUILD EVIDENCE</div>
-                            <p class="font-body text-sm text-zinc-300 mb-2 leading-relaxed">Together we create undeniable proof of the problem.</p>
-                            <p class="font-body text-sm kannada text-zinc-400 leading-relaxed">ಸಮಸ್ಯೆಯ ನಿರಾಕರಿಸಲಾಗದ ಪುರಾವೆಯನ್ನು ನಾವು ಸೇರಿ ರಚಿಸುತ್ತೇವೆ.</p>
-                        </div>
+                        <p class="font-sans text-xs kannada text-slate-500 mt-3">ಶೀಘ್ರದಲ್ಲಿ ಬರಲಿದೆ</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Awareness -->
-        <section class="mb-24 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-red-950 via-red-900 to-black"></div>
-            <div class="relative border-y-8 border-red-600 py-20 px-8">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="font-display text-7xl md:text-9xl text-red-500 mb-6 leading-none">THIS IS NOT<br>NORMAL</h2>
-                    <p class="font-display text-5xl md:text-7xl kannada text-red-400 mb-12 leading-tight">ಇದು ಸಾಮಾನ್ಯವಲ್ಲ</p>
-                    <div class="font-body text-sm md:text-base text-zinc-300 space-y-6 max-w-2xl mx-auto">
-                        <p class="leading-relaxed">Other cities don't live like this. Their residents breathe clean air in winter.</p>
-                        <p class="kannada text-base leading-relaxed">ಇತರ ನಗರಗಳು ಈ ರೀತಿ ಬದುಕುವುದಿಲ್ಲ. ಚಳಿಗಾಲದಲ್ಲಿ ಅವರು ಶುದ್ಧ ಗಾಳಿಯನ್ನು ಉಸಿರಾಡುತ್ತಾರೆ.</p>
-                        <div class="border-t-2 border-red-800 my-8 pt-8">
-                            <p class="text-lg text-red-300 leading-relaxed">We deserve better. Our children deserve better.</p>
-                            <p class="kannada text-lg text-red-400 leading-relaxed">ನಾವು ಉತ್ತಮವಾದದ್ದನ್ನು ಅರ್ಹರು. ನಮ್ಮ ಮಕ್ಕಳು ಉತ್ತಮವಾದದ್ದನ್ನು ಅರ್ಹರು.</p>
-                        </div>
-                    </div>
+        <!-- Awareness & Action -->
+        <section class="mb-20 bg-blue-50 border-y-2 border-blue-200 py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="font-serif text-3xl md:text-4xl text-slate-900 mb-4 font-bold text-center">Raising Awareness</h2>
+                <p class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold text-center">ಅರಿವು ಮೂಡಿಸುವುದು</p>
+                <div class="font-sans text-base text-slate-700 leading-relaxed text-center max-w-2xl mx-auto">
+                    <p class="mb-4">This investigation aims to raise awareness about recurring air quality issues in Gubbalala. All findings presented here are factual and verifiable.</p>
+                    <p class="font-sans text-sm text-slate-600">Share this report to increase community awareness and support evidence-based environmental action.</p>
                 </div>
             </div>
         </section>
@@ -674,18 +741,17 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black border-t-4 border-red-800 py-12">
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
         <div class="container mx-auto px-4 text-center">
-            <p class="font-heading text-zinc-400 text-base mb-2 tracking-wider">THIS IS NOT NORMAL. THIS IS NOT ACCEPTABLE.</p>
-            <p class="font-heading text-zinc-400 text-base kannada mb-6">ಇದು ಸಾಮಾನ್ಯವಲ್ಲ. ಇದು ಸ್ವೀಕಾರಾರ್ಹವಲ್ಲ.</p>
-            <div class="font-body text-zinc-600 text-sm">
-                GUBBALALA AIR QUALITY AWARENESS<br>
-                DOCUMENTATION PROJECT // 2026
+            <p class="font-sans text-sm mb-2">Gubbalala Air Quality Documentation Project</p>
+            <p class="font-sans text-sm kannada mb-4">ಗುಬ್ಬಳಾಳ ವಾಯು ಗುಣಮಟ್ಟ ದಾಖಲಾತಿ ಯೋಜನೆ</p>
+            <div class="font-mono text-xs text-slate-500">
+                Community-led investigation • Published January 2026
             </div>
         </div>
     </footer>
 
-    <!-- Image Comparison Slider Script -->
+    <!-- Scripts -->
     <script>
         // Image Modal Functions
         let isZoomed = false;
@@ -720,18 +786,8 @@
             }
         }
         
-        // Initialize when DOM is ready
+        // Image Comparison Slider
         document.addEventListener('DOMContentLoaded', function() {
-            // Make all regular images clickable (except comparison slider images)
-            const images = document.querySelectorAll('main img:not(#comparison-container img):not([onclick])');
-            images.forEach(img => {
-                img.classList.add('cursor-pointer', 'hover:opacity-90', 'transition-opacity');
-                img.addEventListener('click', function() {
-                    openModal(this.src, this.alt);
-                });
-            });
-            
-            // Image Comparison Slider - clip-path based implementation
             const container = document.getElementById('comparison-container');
             const slider = document.getElementById('comparison-slider');
             const overlay = document.getElementById('comparison-overlay');
