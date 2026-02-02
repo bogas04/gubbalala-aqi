@@ -249,6 +249,13 @@
       .zoomable {
         touch-action: pan-x pan-y pinch-zoom;
       }
+
+      /* View Transitions API */
+      ::view-transition-old(modal-image),
+      ::view-transition-new(modal-image) {
+        animation-duration: 0.4s;
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
     </style>
   </head>
   <body class="bg-white text-slate-800 font-sans overflow-x-hidden antialiased">
@@ -468,7 +475,7 @@
                       src="images/garbage pile in gubbalala.jpg"
                       alt="Documented waste accumulation"
                       class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                      onclick="openModal(this.src, this.alt)"
+                      onclick="openModal(this.src, this.alt, event)"
                     />
                   </div>
                   <div class="font-mono text-xs text-slate-500 mt-2">
@@ -527,7 +534,7 @@
                       src="images/burnt garbage near mantri tranquil.jpeg"
                       alt="Burnt garbage evidence"
                       class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                      onclick="openModal(this.src, this.alt)"
+                      onclick="openModal(this.src, this.alt, event)"
                     />
                   </div>
                   <div class="font-mono text-xs text-slate-500 mt-2">
@@ -540,7 +547,7 @@
                       src="images/gubbalala-road-30-jan-2026-optimized.jpg"
                       alt="Gubbalala road with visible burnt waste - 30 Jan 2026"
                       class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                      onclick="openModal(this.src, this.alt)"
+                      onclick="openModal(this.src, this.alt, event)"
                     />
                   </div>
                   <div class="font-mono text-xs text-slate-500 mt-2">
@@ -589,6 +596,7 @@
                   openModal(
                     'images/smoke plume visible.png',
                     'Smoke plume documentation 1',
+                    event,
                   )
                 "
               >
@@ -600,7 +608,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.1 (29 Jan 2026)
+                  Fig. 3.1 (15 Aug 2025)
                 </div>
               </div>
               <div
@@ -609,6 +617,7 @@
                   openModal(
                     'images/smoke plume circled in red.jpg',
                     'Smoke plume documentation 2',
+                    event,
                   )
                 "
               >
@@ -620,7 +629,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.2 (29 Jan 2026)
+                  Fig. 3.2 (22 Sep 2025)
                 </div>
               </div>
               <div
@@ -629,6 +638,7 @@
                   openModal(
                     'images/smoke plume circled in red 2.jpg',
                     'Smoke plume documentation 3',
+                    event,
                   )
                 "
               >
@@ -640,7 +650,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.3 (29 Jan 2026)
+                  Fig. 3.3 (08 Oct 2025)
                 </div>
               </div>
               <div
@@ -649,6 +659,7 @@
                   openModal(
                     'images/smoke plume circled in red 3.jpg',
                     'Smoke plume documentation 4',
+                    event,
                   )
                 "
               >
@@ -660,7 +671,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.4 (29 Jan 2026)
+                  Fig. 3.4 (18 Nov 2025)
                 </div>
               </div>
               <div
@@ -669,6 +680,7 @@
                   openModal(
                     'images/smoke plume circled in red 4.jpg',
                     'Smoke plume documentation 5',
+                    event,
                   )
                 "
               >
@@ -680,7 +692,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.5 (29 Jan 2026)
+                  Fig. 3.5 (12 Dec 2025)
                 </div>
               </div>
               <div
@@ -689,6 +701,7 @@
                   openModal(
                     'images/smoke plume circled in red 5.jpg',
                     'Smoke plume documentation 6',
+                    event,
                   )
                 "
               >
@@ -700,7 +713,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.6 (29 Jan 2026)
+                  Fig. 3.6 (19 Jan 2026)
                 </div>
               </div>
             </div>
@@ -746,16 +759,41 @@
               </div>
             </div>
             <div>
-              <div class="aspect-[4/3] overflow-hidden rounded">
-                <img
-                  src="images/garbage burning at night.jpg"
-                  alt="Evening burning activity"
-                  class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                  onclick="openModal(this.src, this.alt)"
-                />
-              </div>
-              <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 4: Evening burning activity documented (29 Jan 2026)
+              <div class="grid grid-cols-1 gap-4">
+                <div>
+                  <div class="aspect-[4/3] overflow-hidden rounded">
+                    <img
+                      src="images/garbage burning at night.jpg"
+                      alt="Evening burning activity"
+                      class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
+                      onclick="openModal(this.src, this.alt, event)"
+                    />
+                  </div>
+                  <div class="font-mono text-xs text-slate-500 mt-2">
+                    Fig. 4.1: Evening burning activity documented (29 Jan 2026)
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="aspect-[4/3] overflow-hidden rounded border border-slate-200 bg-black"
+                  >
+                    <video
+                      controls
+                      class="w-full h-full object-cover"
+                      preload="metadata"
+                    >
+                      <source
+                        src="images/night burning of garbage with visible fire.mp4"
+                        type="video/mp4"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="font-mono text-xs text-slate-500 mt-2">
+                    Fig. 4.2: Night burning video evidence with visible flames
+                    (29 Jan 2026)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1198,6 +1236,7 @@
                 openModal(
                   'images/google maps aqi layer showing gubbala in red.png',
                   'Google Maps AQI Layer - Gubbalala in Red',
+                  event,
                 )
               "
             >
@@ -1220,6 +1259,7 @@
                 openModal(
                   'images/google maps aqi layer showing gubbala in red 2.png',
                   'Google Maps AQI Layer Detail',
+                  event,
                 )
               "
             >
@@ -1242,6 +1282,7 @@
                 openModal(
                   'images/google-maps-aqi-layer-optimized.jpg',
                   'Google Maps AQI Layer - Mobile View',
+                  event,
                 )
               "
             >
@@ -1264,6 +1305,7 @@
                 openModal(
                   'images/apple-maps-optimized.jpg',
                   'Apple Maps - Gubbalala Location',
+                  event,
                 )
               "
             >
@@ -1288,6 +1330,7 @@
               openModal(
                 'images/google maps screenshot of area.jpg',
                 'Google Maps location overview',
+                event,
               )
             "
           >
@@ -1371,35 +1414,115 @@
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="mt-8">
-            <h4 class="font-sans text-xl font-semibold text-slate-900 mb-3">
-              Recent Video Documentation
-            </h4>
-            <p
-              class="font-sans text-base kannada text-slate-600 mb-4 font-medium"
+      <!-- SECTION:ONGOING-EVIDENCE:START -->
+      <section
+        class="mb-20 bg-amber-50 border-y-2 border-amber-200 py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16"
+      >
+        <div class="max-w-5xl mx-auto">
+          <div class="mb-8 sticky-header -mx-4 px-4 bg-amber-50">
+            <div class="section-label mb-4 text-amber-700">
+              Continuous Monitoring
+            </div>
+            <h2
+              id="ongoing-evidence"
+              class="font-serif text-4xl md:text-5xl mb-3 font-bold"
             >
-              ಇತ್ತೀಚಿನ ವೀಡಿಯೊ ದಾಖಲೆ
+              <a
+                href="#ongoing-evidence"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Ongoing Field Reports
+              </a>
+            </h2>
+            <p
+              class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
+            >
+              ಮುಂದುವರಿದ ಕ್ಷೇತ್ರ ವರದಿಗಳು
             </p>
-            <div class="border-2 border-slate-300 rounded overflow-hidden">
-              <video controls class="w-full" preload="metadata">
-                <source
-                  src="images/gubbalala 2 feb 2026.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+          </div>
+
+          <div
+            class="font-sans text-base text-slate-700 leading-relaxed mb-8 bg-white p-6 rounded-lg border border-amber-200"
+          >
+            <p class="mb-4">
+              This section archives new evidence as it emerges. Each sighting is
+              documented with timestamps, location data, and visual records to
+              maintain a comprehensive investigative trail of the ongoing
+              situation.
+            </p>
+            <p class="kannada text-slate-600">
+              ಈ ವಿಭಾಗವು ಹೊಸ ಸಾಕ್ಷ್ಯಗಳನ್ನು ದಾಖಲಿಸುತ್ತದೆ. ಪ್ರತಿಯೊಂದು ವೀಕ್ಷಣೆಯನ್ನು
+              ಸಮಯ ಮುದ್ರೆಗಳು ಮತ್ತು ದೃಶ್ಯ ದಾಖಲೆಗಳೊಂದಿಗೆ ದಾಖಲಿಸಲಾಗಿದೆ.
+            </p>
+          </div>
+
+          <div class="space-y-8">
+            <!-- Evidence Entry: 2 Feb 2026 -->
+            <div
+              class="bg-white p-6 rounded-lg border-2 border-amber-300 shadow-sm"
+            >
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <div class="font-mono text-xs text-amber-700 font-semibold">
+                    FIELD REPORT #001
+                  </div>
+                  <div class="font-sans text-sm text-slate-500 mt-1">
+                    Documented: 2 February 2026
+                  </div>
+                </div>
+                <div
+                  class="px-3 py-1 bg-amber-100 text-amber-800 rounded text-xs font-semibold"
+                >
+                  NEW
+                </div>
+              </div>
+              <div
+                class="border-2 border-slate-300 rounded overflow-hidden mb-3"
+              >
+                <video controls class="w-full" preload="metadata">
+                  <source
+                    src="images/gubbalala 2 feb 2026.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="font-sans text-sm text-slate-700 leading-relaxed">
+                <p class="mb-2">
+                  Video evidence captured showing current conditions in the
+                  documented area. This footage provides ongoing visual
+                  verification of the situation described in earlier stages of
+                  this investigation.
+                </p>
+                <p class="kannada text-slate-600 text-xs">
+                  ದಾಖಲಿಸಿದ ಪ್ರದೇಶದಲ್ಲಿ ಪ್ರಸ್ತುತ ಪರಿಸ್ಥಿತಿಗಳನ್ನು ತೋರಿಸುವ ವೀಡಿಯೊ
+                  ಸಾಕ್ಷ್ಯ.
+                </p>
+              </div>
+              <div
+                class="mt-3 pt-3 border-t border-slate-200 font-mono text-xs text-slate-500"
+              >
+                Duration: 18 seconds • Location: Gubbalala, Bengaluru • Format:
+                MP4
+              </div>
             </div>
-            <div class="font-mono text-xs text-slate-500 mt-2">
-              Video: Current conditions in Gubbalala (2 Feb 2026) - 18 seconds
+
+            <!-- Placeholder for future evidence -->
+            <div
+              class="bg-slate-50 p-6 rounded-lg border-2 border-dashed border-slate-300 text-center"
+            >
+              <div class="font-sans text-sm text-slate-500">
+                Additional evidence entries will be documented here as new
+                sightings are reported and verified.
+              </div>
+              <div class="font-sans text-xs kannada text-slate-400 mt-2">
+                ಹೊಸ ವೀಕ್ಷಣೆಗಳನ್ನು ವರದಿ ಮಾಡಿದಾಗ ಹೆಚ್ಚುವರಿ ಸಾಕ್ಷ್ಯಗಳನ್ನು ಇಲ್ಲಿ
+                ದಾಖಲಿಸಲಾಗುವುದು.
+              </div>
             </div>
-            <p class="font-sans text-sm text-slate-600 mt-3">
-              This recent footage shows the current state of the area, providing
-              visual context to the ongoing situation.
-            </p>
-            <p class="font-sans text-sm kannada text-slate-600 mt-1">
-              ಈ ಇತ್ತೀಚಿನ ದೃಶ್ಯಾವಳಿ ಪ್ರದೇಶದ ಪ್ರಸ್ತುತ ಸ್ಥಿತಿಯನ್ನು ತೋರಿಸುತ್ತದೆ.
-            </p>
           </div>
         </div>
       </section>
@@ -1446,7 +1569,7 @@
                   src="images/a tea vendor putting off fire after being asked.jpg"
                   alt="Community member extinguishing fire after request"
                   class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                  onclick="openModal(this.src, this.alt)"
+                  onclick="openModal(this.src, this.alt, event)"
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
@@ -1458,28 +1581,21 @@
               <div
                 class="aspect-[4/3] overflow-hidden rounded border border-slate-200 bg-black"
               >
-                <iframe
-                  src="https://www.youtube.com/embed/BtDvLkJ7vfE?rel=0"
-                  title="Community Response Video Evidence"
-                  frameborder="0"
-                  allow="
-                    accelerometer;
-                    autoplay;
-                    clipboard-write;
-                    encrypted-media;
-                    gyroscope;
-                    picture-in-picture;
-                    web-share;
-                  "
-                  allowfullscreen
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  class="w-full h-full"
+                <video
+                  controls
+                  class="w-full h-full object-cover"
+                  preload="metadata"
                 >
-                </iframe>
+                  <source
+                    src="images/tea vendor putting off fire upon request.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 5.2: Video documentation of community engagement (29 Jan
-                2026)
+                Fig. 5.2: Video documentation of tea vendor extinguishing fire
+                (29 Jan 2026)
               </div>
             </div>
           </div>
@@ -1637,21 +1753,82 @@
       // Image Modal Functions
       let isZoomed = false;
 
-      function openModal(imgSrc, imgAlt) {
+      function openModal(imgSrc, imgAlt, event) {
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
-        modal.classList.remove("hidden");
-        modalImg.src = imgSrc;
-        modalImg.alt = imgAlt;
-        modalImg.style.transform = "scale(1)";
-        isZoomed = false;
-        document.body.style.overflow = "hidden";
+
+        // Find the clicked image element - it could be the event target itself or a child
+        let clickedImg = null;
+        if (event) {
+          clickedImg =
+            event.target.tagName === "IMG"
+              ? event.target
+              : event.currentTarget.querySelector("img");
+        }
+
+        // Use View Transitions API if supported
+        if (document.startViewTransition && clickedImg) {
+          // Clear all view-transition-names first
+          document.querySelectorAll("img").forEach((el) => {
+            if (el.style.viewTransitionName) {
+              el.style.viewTransitionName = "";
+            }
+          });
+
+          // Temporarily assign unique view-transition-name to clicked image
+          clickedImg.style.viewTransitionName = "modal-image";
+
+          // Small delay to ensure style is applied
+          requestAnimationFrame(() => {
+            document
+              .startViewTransition(() => {
+                // Remove from clicked image before setting on modal
+                clickedImg.style.viewTransitionName = "";
+                // Set on modal image
+                modalImg.style.viewTransitionName = "modal-image";
+                modal.classList.remove("hidden");
+                modalImg.src = imgSrc;
+                modalImg.alt = imgAlt;
+                modalImg.style.transform = "scale(1)";
+                isZoomed = false;
+                document.body.style.overflow = "hidden";
+              })
+              .finished.finally(() => {
+                // Clean up
+                modalImg.style.viewTransitionName = "";
+              });
+          });
+        } else {
+          // Fallback for browsers without View Transitions support
+          modal.classList.remove("hidden");
+          modalImg.src = imgSrc;
+          modalImg.alt = imgAlt;
+          modalImg.style.transform = "scale(1)";
+          isZoomed = false;
+          document.body.style.overflow = "hidden";
+        }
       }
 
       function closeModal() {
         const modal = document.getElementById("imageModal");
-        modal.classList.add("hidden");
-        document.body.style.overflow = "auto";
+        const modalImg = document.getElementById("modalImage");
+
+        // Use View Transitions API if supported
+        if (document.startViewTransition) {
+          document
+            .startViewTransition(() => {
+              modal.classList.add("hidden");
+              document.body.style.overflow = "auto";
+            })
+            .finished.finally(() => {
+              // Remove view-transition-name after closing
+              modalImg.style.viewTransitionName = "";
+            });
+        } else {
+          // Fallback for browsers without View Transitions support
+          modal.classList.add("hidden");
+          document.body.style.overflow = "auto";
+        }
       }
 
       function toggleZoom(event) {
