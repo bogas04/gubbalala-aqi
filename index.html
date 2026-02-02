@@ -319,9 +319,15 @@
       <section class="mb-20">
         <div class="mb-12 sticky-header -mx-4 px-4">
           <h2
-            class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+            id="key-findings"
+            class="font-serif text-4xl md:text-5xl mb-3 font-bold"
           >
-            Key Findings
+            <a
+              href="#key-findings"
+              class="text-slate-900 hover:text-slate-700 no-underline"
+            >
+              <span class="text-slate-400 mr-2">#</span>Key Findings
+            </a>
           </h2>
           <p
             class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -387,9 +393,15 @@
         <div class="mb-12 sticky-header -mx-4 px-4">
           <div class="section-label mb-4">Field Observations</div>
           <h2
-            class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+            id="observed-pattern"
+            class="font-serif text-4xl md:text-5xl mb-3 font-bold"
           >
-            The Observed Pattern
+            <a
+              href="#observed-pattern"
+              class="text-slate-900 hover:text-slate-700 no-underline"
+            >
+              <span class="text-slate-400 mr-2">#</span>The Observed Pattern
+            </a>
           </h2>
           <p
             class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -414,8 +426,14 @@
         <div class="timeline-item">
           <div class="grid md:grid-cols-2 gap-8 items-start">
             <div>
-              <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">
-                Stage 1: Waste Accumulation
+              <h3 id="stage-1" class="font-sans text-2xl font-semibold mb-2">
+                <a
+                  href="#stage-1"
+                  class="text-slate-900 hover:text-slate-700 no-underline"
+                >
+                  <span class="text-slate-400 mr-2">#</span>Stage 1: Waste
+                  Accumulation
+                </a>
               </h3>
               <p
                 class="font-sans text-xl kannada text-slate-600 mb-4 font-medium"
@@ -454,20 +472,8 @@
                     />
                   </div>
                   <div class="font-mono text-xs text-slate-500 mt-2">
-                    Fig. 1.1: Waste accumulation documented on roadside
-                  </div>
-                </div>
-                <div>
-                  <div class="aspect-[4/3] overflow-hidden rounded">
-                    <img
-                      src="images/gubbalala-road-30-jan-2026-optimized.jpg"
-                      alt="Gubbalala road with visible waste accumulation - 30 Jan 2026"
-                      class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                      onclick="openModal(this.src, this.alt)"
-                    />
-                  </div>
-                  <div class="font-mono text-xs text-slate-500 mt-2">
-                    Fig. 1.2: Gubbalala road conditions (30 Jan 2026)
+                    Fig. 1.1: Waste accumulation documented on roadside (29 Jan
+                    2026)
                   </div>
                 </div>
               </div>
@@ -479,8 +485,14 @@
         <div class="timeline-item">
           <div class="grid md:grid-cols-2 gap-8 items-start">
             <div class="md:order-2">
-              <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">
-                Stage 2: Burning Activity
+              <h3 id="stage-2" class="font-sans text-2xl font-semibold mb-2">
+                <a
+                  href="#stage-2"
+                  class="text-slate-900 hover:text-slate-700 no-underline"
+                >
+                  <span class="text-slate-400 mr-2">#</span>Stage 2: Burning
+                  Activity
+                </a>
               </h3>
               <p
                 class="font-sans text-xl kannada text-slate-600 mb-4 font-medium"
@@ -508,16 +520,33 @@
               </div>
             </div>
             <div class="md:order-1">
-              <div class="aspect-[4/3] overflow-hidden rounded">
-                <img
-                  src="images/burnt garbage near mantri tranquil.jpeg"
-                  alt="Burnt garbage evidence"
-                  class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                  onclick="openModal(this.src, this.alt)"
-                />
-              </div>
-              <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 2: Burnt garbage near Mantri Tranquil
+              <div class="grid grid-cols-1 gap-4">
+                <div>
+                  <div class="aspect-[4/3] overflow-hidden rounded">
+                    <img
+                      src="images/burnt garbage near mantri tranquil.jpeg"
+                      alt="Burnt garbage evidence"
+                      class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
+                      onclick="openModal(this.src, this.alt)"
+                    />
+                  </div>
+                  <div class="font-mono text-xs text-slate-500 mt-2">
+                    Fig. 2.1: Burnt garbage near Mantri Tranquil (29 Jan 2026)
+                  </div>
+                </div>
+                <div>
+                  <div class="aspect-[4/3] overflow-hidden rounded">
+                    <img
+                      src="images/gubbalala-road-30-jan-2026-optimized.jpg"
+                      alt="Gubbalala road with visible burnt waste - 30 Jan 2026"
+                      class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
+                      onclick="openModal(this.src, this.alt)"
+                    />
+                  </div>
+                  <div class="font-mono text-xs text-slate-500 mt-2">
+                    Fig. 2.2: Gubbalala road with burnt waste (30 Jan 2026)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -526,8 +555,14 @@
         <!-- STAGE:3-SMOKE-DISPERSION:START -->
         <div class="timeline-item">
           <div>
-            <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">
-              Stage 3: Smoke Dispersion
+            <h3 id="stage-3" class="font-sans text-2xl font-semibold mb-2">
+              <a
+                href="#stage-3"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Stage 3: Smoke
+                Dispersion
+              </a>
             </h3>
             <p
               class="font-sans text-xl kannada text-slate-600 mb-4 font-medium"
@@ -565,7 +600,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.1
+                  Fig. 3.1 (29 Jan 2026)
                 </div>
               </div>
               <div
@@ -585,7 +620,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.2
+                  Fig. 3.2 (29 Jan 2026)
                 </div>
               </div>
               <div
@@ -605,7 +640,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.3
+                  Fig. 3.3 (29 Jan 2026)
                 </div>
               </div>
               <div
@@ -625,7 +660,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.4
+                  Fig. 3.4 (29 Jan 2026)
                 </div>
               </div>
               <div
@@ -645,7 +680,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.5
+                  Fig. 3.5 (29 Jan 2026)
                 </div>
               </div>
               <div
@@ -665,7 +700,7 @@
                   />
                 </div>
                 <div class="font-mono text-xs text-slate-500 mt-1">
-                  Fig. 3.6
+                  Fig. 3.6 (29 Jan 2026)
                 </div>
               </div>
             </div>
@@ -676,8 +711,14 @@
         <div class="timeline-item">
           <div class="grid md:grid-cols-2 gap-8 items-start">
             <div>
-              <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">
-                Stage 4: Evening & Night Activity
+              <h3 id="stage-4" class="font-sans text-2xl font-semibold mb-2">
+                <a
+                  href="#stage-4"
+                  class="text-slate-900 hover:text-slate-700 no-underline"
+                >
+                  <span class="text-slate-400 mr-2">#</span>Stage 4: Evening &
+                  Night Activity
+                </a>
               </h3>
               <p
                 class="font-sans text-xl kannada text-slate-600 mb-4 font-medium"
@@ -714,7 +755,7 @@
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 4: Evening burning activity documented
+                Fig. 4: Evening burning activity documented (29 Jan 2026)
               </div>
             </div>
           </div>
@@ -726,9 +767,15 @@
         <div class="mb-8 sticky-header -mx-4 px-4">
           <div class="section-label mb-4">Environmental Analysis</div>
           <h2
-            class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+            id="environmental-context"
+            class="font-serif text-4xl md:text-5xl mb-3 font-bold"
           >
-            Winter Inversion Effect
+            <a
+              href="#environmental-context"
+              class="text-slate-900 hover:text-slate-700 no-underline"
+            >
+              <span class="text-slate-400 mr-2">#</span>Winter Inversion Effect
+            </a>
           </h2>
           <p
             class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -756,6 +803,9 @@
               <h4 class="font-sans font-semibold text-slate-900 mb-2">
                 Summer Conditions
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-3">
+                ಬೇಸಿಗೆಯ ಪರಿಸ್ಥಿತಿಗಳು
+              </p>
               <div class="flex items-center mb-3">
                 <span class="aqi-good">AQI: 30-50 (Good)</span>
               </div>
@@ -768,6 +818,9 @@
               <h4 class="font-sans font-semibold text-slate-900 mb-2">
                 Winter Conditions
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-3">
+                ಚಳಿಗಾಲದ ಪರಿಸ್ಥಿತಿಗಳು
+              </p>
               <div class="flex items-center mb-3">
                 <span class="aqi-poor">AQI: 150-200+ (Poor/Hazardous)</span>
               </div>
@@ -788,9 +841,16 @@
           <div class="mb-12 sticky-header -mx-4 px-4">
             <div class="section-label mb-4">Comparative Analysis</div>
             <h2
-              class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+              id="visual-evidence"
+              class="font-serif text-4xl md:text-5xl mb-3 font-bold"
             >
-              Before & After Documentation
+              <a
+                href="#visual-evidence"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Before & After
+                Documentation
+              </a>
             </h2>
             <p
               class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -952,9 +1012,15 @@
           <div class="mb-8 sticky-header -mx-4 px-4">
             <div class="section-label mb-4">Health Assessment</div>
             <h2
-              class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+              id="health-impact"
+              class="font-serif text-4xl md:text-5xl mb-3 font-bold"
             >
-              Health Impact Analysis
+              <a
+                href="#health-impact"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Health Impact Analysis
+              </a>
             </h2>
             <p
               class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -980,6 +1046,9 @@
               <h4 class="font-sans font-semibold text-slate-900 mb-3">
                 Acute Effects
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-3">
+                ತೀವ್ರ ಪರಿಣಾಮಗಳು
+              </p>
               <ul class="space-y-2 font-sans text-sm text-slate-700">
                 <li>• Eye, nose, and throat irritation</li>
                 <li>• Respiratory discomfort and coughing</li>
@@ -991,6 +1060,9 @@
               <h4 class="font-sans font-semibold text-slate-900 mb-3">
                 Long-Term Risks
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-3">
+                ದೀರ್ಘಾವಧಿ ಅಪಾಯಗಳು
+              </p>
               <ul class="space-y-2 font-sans text-sm text-slate-700">
                 <li>• Chronic respiratory diseases</li>
                 <li>• Cardiovascular complications</li>
@@ -1023,9 +1095,15 @@
           <div class="mb-8 sticky-header -mx-4 px-4">
             <div class="section-label mb-4">Geographic Documentation</div>
             <h2
-              class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+              id="geolocation-evidence"
+              class="font-serif text-4xl md:text-5xl mb-3 font-bold"
             >
-              Location Evidence
+              <a
+                href="#geolocation-evidence"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Location Evidence
+              </a>
             </h2>
             <p
               class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -1039,6 +1117,9 @@
               <h4 class="font-semibold text-slate-900 mb-2">
                 Primary Location
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-2">
+                ಪ್ರಾಥಮಿಕ ಸ್ಥಳ
+              </p>
               <p class="text-slate-700 mb-2">
                 Near Mantri Tranquil Apartments, Gubbalala
               </p>
@@ -1050,6 +1131,9 @@
               <h4 class="font-semibold text-slate-900 mb-2">
                 Verification Method
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-2">
+                ಪರಿಶೀಲನೆ ವಿಧಾನ
+              </p>
               <p class="text-slate-700 text-sm">
                 GPS-tagged photographs, Google Maps satellite imagery, and
                 street-level verification
@@ -1077,9 +1161,16 @@
           <div class="mb-8 sticky-header -mx-4 px-4">
             <div class="section-label mb-4">Third-Party Verification</div>
             <h2
-              class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+              id="google-maps-evidence"
+              class="font-serif text-4xl md:text-5xl mb-3 font-bold"
             >
-              Google Maps Air Quality Data
+              <a
+                href="#google-maps-evidence"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Google Maps Air
+                Quality Data
+              </a>
             </h2>
             <p
               class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -1120,7 +1211,7 @@
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 6.1: Google Maps AQI overlay (Desktop)
+                Fig. 6.1: Google Maps AQI overlay (Desktop, 29 Jan 2026)
               </div>
             </div>
             <div
@@ -1142,7 +1233,7 @@
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 6.2: AQI layer detail view (Desktop)
+                Fig. 6.2: AQI layer detail view (Desktop, 29 Jan 2026)
               </div>
             </div>
             <div
@@ -1155,7 +1246,7 @@
               "
             >
               <div
-                class="aspect-[9/16] overflow-hidden rounded border border-slate-200"
+                class="aspect-[4/3] overflow-hidden rounded border border-slate-200"
               >
                 <img
                   src="images/google-maps-aqi-layer-optimized.jpg"
@@ -1164,7 +1255,7 @@
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 6.3: Google Maps AQI overlay (Mobile)
+                Fig. 6.3: Google Maps AQI overlay (Mobile, 02 Feb 2026)
               </div>
             </div>
             <div
@@ -1177,7 +1268,7 @@
               "
             >
               <div
-                class="aspect-[9/16] overflow-hidden rounded border border-slate-200"
+                class="aspect-[4/3] overflow-hidden rounded border border-slate-200"
               >
                 <img
                   src="images/apple-maps-optimized.jpg"
@@ -1186,7 +1277,7 @@
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 6.4: Apple Maps location verification
+                Fig. 6.4: Apple Maps location verification (02 Feb 2026)
               </div>
             </div>
           </div>
@@ -1210,7 +1301,7 @@
               />
             </div>
             <div class="font-mono text-xs text-slate-500 mt-2">
-              Fig. 6.5: Geographic location overview
+              Fig. 6.5: Geographic location overview (29 Jan 2026)
             </div>
           </div>
         </div>
@@ -1222,9 +1313,15 @@
           <div class="mb-8 sticky-header -mx-4 px-4">
             <div class="section-label mb-4">Community Response</div>
             <h2
-              class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+              id="community-documentation"
+              class="font-serif text-4xl md:text-5xl mb-3 font-bold"
             >
-              Research Efforts
+              <a
+                href="#community-documentation"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Research Efforts
+              </a>
             </h2>
             <p
               class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -1251,6 +1348,9 @@
               <h4 class="font-sans font-semibold text-slate-900 mb-3">
                 Documentation Methods
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-3">
+                ದಾಖಲಾತಿ ವಿಧಾನಗಳು
+              </p>
               <ul class="space-y-2 font-sans text-sm text-slate-700">
                 <li>• Time-stamped photography</li>
                 <li>• GPS coordinate verification</li>
@@ -1262,6 +1362,9 @@
               <h4 class="font-sans font-semibold text-slate-900 mb-3">
                 Data Collection Period
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-3">
+                ಡೇಟಾ ಸಂಗ್ರಹಣೆ ಅವಧಿ
+              </p>
               <p class="font-sans text-sm text-slate-700">
                 Ongoing documentation since winter 2025-2026, with particular
                 focus during temperature inversion periods (December-February).
@@ -1307,9 +1410,15 @@
           <div class="mb-8 sticky-header -mx-4 px-4">
             <div class="section-label mb-4">Local Cooperation</div>
             <h2
-              class="font-serif text-4xl md:text-5xl text-slate-900 mb-3 font-bold"
+              id="community-cooperation"
+              class="font-serif text-4xl md:text-5xl mb-3 font-bold"
             >
-              Individual Actions
+              <a
+                href="#community-cooperation"
+                class="text-slate-900 hover:text-slate-700 no-underline"
+              >
+                <span class="text-slate-400 mr-2">#</span>Individual Actions
+              </a>
             </h2>
             <p
               class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold"
@@ -1342,7 +1451,7 @@
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
                 Fig. 5.1: Local vendor extinguishing fire after awareness
-                discussion
+                discussion (29 Jan 2026)
               </div>
             </div>
             <div>
@@ -1369,7 +1478,8 @@
                 </iframe>
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 5.2: Video documentation of community engagement
+                Fig. 5.2: Video documentation of community engagement (29 Jan
+                2026)
               </div>
             </div>
           </div>
@@ -1397,6 +1507,9 @@
               <h4 class="font-sans font-semibold text-slate-900 mb-3">
                 Education Approach
               </h4>
+              <p class="font-sans text-xs kannada text-slate-600 mb-3">
+                ಶಿಕ್ಷಣ ವಿಧಾನ
+              </p>
               <ul class="space-y-2 font-sans text-sm text-slate-700">
                 <li>• Respectful dialogue with community members</li>
                 <li>• Sharing health impact information</li>
@@ -1472,9 +1585,15 @@
       >
         <div class="max-w-4xl mx-auto">
           <h2
-            class="font-serif text-3xl md:text-4xl text-slate-900 mb-4 font-bold text-center"
+            id="awareness-action"
+            class="font-serif text-3xl md:text-4xl mb-4 font-bold text-center"
           >
-            Raising Awareness
+            <a
+              href="#awareness-action"
+              class="text-slate-900 hover:text-slate-700 no-underline"
+            >
+              <span class="text-slate-400 mr-2">#</span>Raising Awareness
+            </a>
           </h2>
           <p
             class="font-serif text-2xl md:text-3xl kannada text-slate-600 mb-6 font-semibold text-center"
