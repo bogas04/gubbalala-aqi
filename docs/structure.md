@@ -1,6 +1,6 @@
 # index.html Structure Documentation
 
-Quick reference for navigating and editing the main HTML file (~1627 lines).
+Quick reference for navigating and editing the main HTML file (~1900 lines).
 
 ## Navigation Strategy
 
@@ -37,15 +37,16 @@ All markers follow the pattern: `<!-- TYPE:NAME:START -->`
 
 ## File Overview
 
-- **Total Lines:** ~1627 (will change with edits)
+- **Total Lines:** ~1900 (will change with edits)
 - **Language:** HTML with embedded CSS and JavaScript
 - **Bilingual:** English + Kannada (ಕನ್ನಡ)
 - **Framework:** Tailwind CSS (CDN)
 - **Fonts:** Crimson Pro (serif), IBM Plex Sans/Mono, Noto Sans Kannada
+- **Interactivity:** View Transitions API for image modals
 
 ## Document Structure with Markers
 
-### Head Section (Lines 1-254)
+### Head Section
 
 No markers - contains meta tags, SEO, structured data, CSS
 
@@ -55,7 +56,7 @@ No markers - contains meta tags, SEO, structured data, CSS
 - `.aqi-badge` - Color-coded AQI indicators (good/moderate/poor/hazardous)
 - `.timeline-item` - Timeline with left border and circle marker
 - `.sticky-header` - Sticky section headers with backdrop blur
-- `.modal-*` - Image modal styling
+- `::view-transition-*` - View Transitions API configuration for smooth modal animations
 
 ### Body Content
 
@@ -63,12 +64,13 @@ No markers - contains meta tags, SEO, structured data, CSS
 
 #### `<!-- COMPONENT:IMAGE-MODAL:START -->`
 
-Full-screen modal for image zoom
+Full-screen modal for image zoom with View Transitions support
 
 - Close button (top-right)
-- Click-to-zoom functionality (2x scale)
+- Click-to-zoom functionality (2x scale) with `toggleZoom`
 - Escape key support
 - IDs: `imageModal`, `modalImage`
+- Implements `view-transition-name: modal-image` dynamically via JS to avoid duplicate name errors
 
 ---
 
@@ -99,7 +101,7 @@ Main content container - all sections below are within this
 - Three data cards: AQI range (30→200), cigarette equivalent (~6), frequency (daily)
 - Investigation summary text (English + Kannada)
 
-**Figures:** None (just statistics)
+**Figures:** None
 
 **Find it:** `grep -n "SECTION:KEY-FINDINGS" index.html`
 
@@ -116,32 +118,34 @@ Main content container - all sections below are within this
 ##### `<!-- STAGE:1-WASTE-ACCUMULATION:START -->`
 
 - Description + Kannada translation
-- Grid layout with 2 images
-- **Figures:** 1.1, 1.2
-- **Images:**
-  - `garbage pile in gubbalala.jpg`
-  - `gubbalala-road-30-jan-2026-optimized.jpg`
+- Grid layout with image
+- **Figure:** 1.1
+- **Image:** `garbage pile in gubbalala.jpg`
 
 ##### `<!-- STAGE:2-BURNING-ACTIVITY:START -->`
 
 - Description + Kannada translation
-- Single image with caption
-- **Figure:** 2
-- **Images:** `garbage burning at night.jpg`
+- Grid layout with 2 images
+- **Figures:** 2.1, 2.2
+- **Images:**
+  - `burnt garbage near mantri tranquil.jpeg`
+  - `gubbalala-road-30-jan-2026-optimized.jpg`
 
 ##### `<!-- STAGE:3-SMOKE-DISPERSION:START -->`
 
 - Multi-image grid (6 photos)
-- Smoke plume documentation
 - **Figures:** 3.1-3.6
+- **Dates:** August 2025 – January 2026 (spread to show persistence)
 - **Images:** Multiple `smoke plume circled in red [1-5].jpg` + `smoke plume visible.png`
 
 ##### `<!-- STAGE:4-EVENING-NIGHT:START -->`
 
-- Description + single image
-- Community intervention example
-- **Figure:** 4
-- **Images:** `a tea vendor putting off fire after being asked.jpg`
+- Night activity documentation
+- Grid with image and video
+- **Figures:** 4.1, 4.2
+- **Media:**
+  - Image: `garbage burning at night.jpg`
+  - Video: `night burning of garbage with visible fire.mp4`
 
 ---
 
@@ -151,13 +155,8 @@ Main content container - all sections below are within this
 
 **Content:**
 
-- Scientific explanation of temperature inversion
-- Two comparison cards: winter months vs other months
-- Bilingual descriptions
-
-**Figures:** None
-
-**Find it:** `grep -n "SECTION:ENVIRONMENTAL-CONTEXT" index.html`
+- Scientific explanation (bilingual)
+- Comparison cards: Summer vs Winter conditions
 
 ---
 
@@ -168,56 +167,19 @@ Main content container - all sections below are within this
 **Content:**
 
 - Interactive comparison slider (December vs July)
-- Slider implementation with mouse + touch events
-- Two comparison info cards below slider
-
-**Figures:** 5.1, 5.2
-
-**Images:**
-
-- `aqi 180 a smoggy day with visible smoke plumes.png` (December/polluted)
-- `aqi 30 a clean day with bright sky and clouds.jpg` (July/clean)
-
-**Component IDs:**
-
-- `comparison-container`
-- `comparison-slider`
-- `comparison-overlay`
-
-**Find it:** `grep -n "SECTION:VISUAL-EVIDENCE" index.html`
+- AQI Comparison info cards (180 vs 30)
 
 ---
 
 #### `<!-- SECTION:HEALTH-IMPACT:START -->`
 
-**Purpose:** Document health effects and equivalencies
-
-**Content:**
-
-- Health equivalencies (cigarettes per day)
-- Risk factors for vulnerable groups
-- Two info cards + warning box
-- Bilingual text
-
-**Figures:** None
-
-**Find it:** `grep -n "SECTION:HEALTH-IMPACT" index.html`
+**Purpose:** Document health effects
 
 ---
 
 #### `<!-- SECTION:GEOLOCATION-EVIDENCE:START -->`
 
-**Purpose:** GPS verification and location proof
-
-**Content:**
-
-- GPS coordinates display (12.8811°N, 77.5144°E)
-- Location details card
-- Embedded Google Maps iframe
-
-**Figures:** None (embedded map)
-
-**Find it:** `grep -n "SECTION:GEOLOCATION-EVIDENCE" index.html`
+**Purpose:** GPS verification
 
 ---
 
@@ -225,92 +187,50 @@ Main content container - all sections below are within this
 
 **Purpose:** Third-party mapping verification
 
-**Content:**
-
-- Desktop AQI layer screenshots (2 images)
-- Mobile screenshots (2 images: Google Maps + Apple Maps)
-- Satellite overview image
-
 **Figures:** 6.1, 6.2, 6.3, 6.4, 6.5
-
-**Images:**
-
-- `google maps aqi layer showing gubbala in red.png` (desktop)
-- `google maps aqi layer showing gubbala in red 2.png` (desktop detail)
-- `google-maps-aqi-layer-optimized.jpg` (mobile)
-- `apple-maps-optimized.jpg` (mobile)
-- `google maps screenshot of area.jpg` (satellite overview)
-
-**Find it:** `grep -n "SECTION:GOOGLE-MAPS-EVIDENCE" index.html`
 
 ---
 
 #### `<!-- SECTION:COMMUNITY-DOCUMENTATION:START -->`
 
-**Purpose:** Show research methodology and recent evidence
+**Purpose:** Research methodology documentation
+
+---
+
+#### `<!-- SECTION:ONGOING-EVIDENCE:START -->`
+
+**Purpose:** Live/recent evidence feed (Investigative theme)
 
 **Content:**
+- Standalone section with amber theme for active monitoring.
+- Field Report cards (e.g., FIELD REPORT #001).
+- **Recent Video:** `gubbalala 2 feb 2026.mp4` integrated into the report feed.
 
-- Documentation methods card
-- Data collection period card
-- **Video section:** HTML5 video player with recent footage
-
-**Video:**
-
-- File: `gubbalala 2 feb 2026.mp4` (18 seconds, 2.8MB)
-- Caption: "Current conditions (2 Feb 2026)"
-- Bilingual description
-
-**Figures:** None (video doesn't use figure numbering)
-
-**Find it:** `grep -n "SECTION:COMMUNITY-DOCUMENTATION" index.html`
+**Find it:** `grep -n "SECTION:ONGOING-EVIDENCE" index.html`
 
 ---
 
 #### `<!-- SECTION:COMMUNITY-COOPERATION:START -->`
 
-**Purpose:** Local cooperation efforts and WhatsApp community
+**Purpose:** Local cooperation efforts and community action
 
 **Content:**
 
-- Local cooperation description
-- Two-column layout with images
-- WhatsApp community group CTA (green gradient card)
-  - Join button
-  - QR code mention
-
-**Images:**
-
-- `burnt garbage near mantri tranquil.jpeg`
-- `smoke plume visible.png`
-
-**Find it:** `grep -n "SECTION:COMMUNITY-COOPERATION" index.html`
+- Individual action documentation (Tea vendor)
+- Grid with image and video
+- **Figures:** 5.1, 5.2
+- **Media:**
+  - Image: `a tea vendor putting off fire after being asked.jpg`
+  - Video: `tea vendor putting off fire upon request.mp4`
+- WhatsApp community group CTA
 
 ---
 
 #### `<!-- SECTION:AWARENESS-ACTION:START -->`
 
-**Purpose:** Call to action for raising awareness
-
-**Content:**
-
-- Blue background section
-- Centered text layout
-- Bilingual awareness message
-
-**Figures:** None
-
-**Find it:** `grep -n "SECTION:AWARENESS-ACTION" index.html`
-
 ---
 
 #### `<!-- LAYOUT:FOOTER:START -->`
-
-Project credits and metadata
-
-- Project name (English + Kannada)
-- Publication date
-- Dark theme (slate-900 background)
 
 ---
 
@@ -318,114 +238,45 @@ Project credits and metadata
 
 All JavaScript code
 
-**Functions:**
+**Key Functions:**
 
-- `openModal(imgSrc, imgAlt)` - Open image in modal
-- `closeModal()` - Close modal
-- `toggleZoom(event)` - Toggle 2x zoom on modal image
-- `updatePosition(clientX)` - Update slider position
-- Event listeners for slider (mouse + touch)
-- Escape key handler
+- `openModal(imgSrc, imgAlt, event)` - Open image with View Transitions and cleanup.
+- `closeModal()` - Close modal with View Transitions.
+- `toggleZoom(event)` - Toggle 2x zoom.
+- `updatePosition(clientX)` - Interactive comparison slider logic.
 
 ---
 
 ## Figure Numbering System
 
-| Figure Range | Section       | Content Type                 |
-| ------------ | ------------- | ---------------------------- |
-| 1.1-1.2      | Stage 1       | Waste accumulation photos    |
-| 2            | Stage 2       | Burning activity             |
-| 3.1-3.6      | Stage 3       | Smoke plume documentation    |
-| 4            | Stage 4       | Community intervention       |
-| 5.1-5.2      | Before/After  | Comparison images            |
-| 6.1-6.5      | Maps Evidence | Desktop + mobile screenshots |
-| None         | Community     | Video + general photos       |
-
-## Image Asset Conventions
-
-**Naming:**
-
-- Original files: descriptive names with spaces
-- Optimized files: `-optimized.jpg` suffix, kebab-case
-- Max dimension: ~1080px
-- Formats: JPG (photos), PNG (screenshots), MP4 (video)
-
-**Image Integration Pattern:**
-
-```html
-<div class="cursor-pointer" onclick="openModal('path', 'alt')">
-  <div class="aspect-[ratio] overflow-hidden rounded border">
-    <img src="path" alt="description" class="w-full h-full object-cover" />
-  </div>
-  <div class="font-mono text-xs text-slate-500 mt-2">Fig. X.Y: Caption</div>
-</div>
-```
-
-## Adding New Content
-
-### Finding the Right Section
-
-```bash
-# List all sections
-grep -n "<!-- SECTION:" index.html
-
-# Find specific section to add content
-grep -n "SECTION:HEALTH-IMPACT" index.html
-```
-
-### Adding New Images
-
-1. **Optimize:** Resize to 1080p, compress
-2. **Find section:** Use grep with marker name
-3. **Add to grid:** Copy existing image block pattern
-4. **Update figure numbers:** Increment sequentially within section
-5. **Add onclick:** Include modal functionality `onclick="openModal(src, alt)"`
-
-### Adding New Video
-
-1. **Find marker:** `grep -n "SECTION:COMMUNITY-DOCUMENTATION" index.html`
-2. **Format:** HTML5 `<video>` tag with controls
-3. **Include:** Source tag, caption, bilingual description
-4. **Pattern:**
-
-```html
-<video controls class="w-full" preload="metadata">
-  <source src="images/filename.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-```
-
-### Adding New Section
-
-1. **Location:** Before `<!-- SECTION:AWARENESS-ACTION:START -->`
-2. **Add marker:** `<!-- SECTION:NEW-SECTION-NAME:START -->`
-3. **Include:** Sticky header with bilingual titles
-4. **Wrapper:** `<section class="mb-20">`
-5. **Update this doc:** Add new section to marker list
-
-### Adding New Stage to Timeline
-
-1. **Find:** `grep -n "STAGE:4-EVENING-NIGHT" index.html`
-2. **Add after Stage 4:** Before closing of DOCUMENTED-PATTERN section
-3. **Marker:** `<!-- STAGE:5-NEW-STAGE:START -->`
-4. **Structure:** Copy existing stage pattern
-5. **Update figures:** Continue numbering (would be Figure 5)
+| Figure Range | Section                | Content Type                    |
+| ------------ | ---------------------- | ------------------------------- |
+| 1.1          | Stage 1                | Waste accumulation              |
+| 2.1-2.2      | Stage 2                | Burning activity evidence       |
+| 3.1-3.6      | Stage 3                | Smoke plume (Aug 25 - Jan 26)   |
+| 4.1-4.2      | Stage 4                | Evening/Night activity (+Video) |
+| 5.1-5.2      | Community Cooperation  | Engagement evidence (+Video)    |
+| 6.1-6.5      | Google Maps Evidence   | Third-party verification        |
+| FIELD REPORT | Ongoing Evidence       | Field records for new sightings |
 
 ## Interactive Components
 
 ### Image Modal (Global)
 
-- **Activation:** `onclick="openModal(src, alt)"`
-- **Features:** Click-to-zoom (2x scale), close button, ESC key
-- **IDs:** `imageModal`, `modalImage`
-- **Find it:** `grep -n "COMPONENT:IMAGE-MODAL" index.html`
+- **Activation:** `onclick="openModal(src, alt, event)"`
+- **Animation:** Uses CSS View Transitions API.
+- **Cleanup:** Script removes `view-transition-name` after animations to prevent duplicate name errors.
 
 ### Comparison Slider
 
-- **Location:** VISUAL-EVIDENCE-BEFORE-AFTER section
-- **Features:** Mouse drag, touch support, click-to-jump
-- **IDs:** `comparison-container`, `comparison-slider`, `comparison-overlay`
-- **Technology:** CSS clip-path on overlay image
+- **Location:** VISUAL-EVIDENCE-BEFORE-AFTER
+- **Technology:** CSS `clip-path` and absolute positioning.
+
+## Styles & Theming
+
+- **Primary Colors:** Teal (`#1a5f7a`), Orange (`#d97706`)
+- **Ongoing Section:** Amber (`#f59e0b`) background for high importance.
+- **Timeline:** Slate borders with teal markers.
 
 ## Styling Reference
 
