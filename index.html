@@ -252,7 +252,7 @@
     </style>
   </head>
   <body class="bg-white text-slate-800 font-sans overflow-x-hidden antialiased">
-    <!-- Image Modal -->
+    <!-- COMPONENT:IMAGE-MODAL:START -->
     <div
       id="imageModal"
       class="hidden fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4"
@@ -278,7 +278,7 @@
       </div>
     </div>
 
-    <!-- Header -->
+    <!-- LAYOUT:HEADER:START -->
     <header class="bg-slate-50 border-b border-slate-200">
       <div class="container mx-auto px-4 py-16 md:py-24">
         <div class="max-w-4xl mx-auto">
@@ -313,9 +313,9 @@
       </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- LAYOUT:MAIN:START -->
     <main class="container mx-auto px-4 py-12 max-w-6xl">
-      <!-- Key Findings -->
+      <!-- SECTION:KEY-FINDINGS:START -->
       <section class="mb-20">
         <div class="mb-12 sticky-header -mx-4 px-4">
           <h2
@@ -382,7 +382,7 @@
         </div>
       </section>
 
-      <!-- The Documented Pattern -->
+      <!-- SECTION:DOCUMENTED-PATTERN:START -->
       <section class="mb-20">
         <div class="mb-12 sticky-header -mx-4 px-4">
           <div class="section-label mb-4">Field Observations</div>
@@ -397,20 +397,20 @@
             ದಾಖಲಿಸಿದ ನಮೂನೆ
           </p>
         </div>
-        
+
         <div
           class="font-sans text-base text-slate-700 leading-relaxed max-w-3xl mb-12"
         >
           <p>
-            Our investigation identified a recurring four-stage pattern
-            through photography and air quality monitoring.
+            Our investigation identified a recurring four-stage pattern through
+            photography and air quality monitoring.
           </p>
           <p class="kannada text-slate-600 mt-2">
             ನಮ್ಮ ತನಿಖೆಯು ನಾಲ್ಕು-ಹಂತದ ಮಾದರಿಯನ್ನು ಗುರುತಿಸಿದೆ.
           </p>
         </div>
 
-        <!-- Stage 1: Waste Accumulation -->
+        <!-- STAGE:1-WASTE-ACCUMULATION:START -->
         <div class="timeline-item">
           <div class="grid md:grid-cols-2 gap-8 items-start">
             <div>
@@ -443,22 +443,39 @@
               </div>
             </div>
             <div>
-              <div class="aspect-[4/3] overflow-hidden rounded">
-                <img
-                  src="images/garbage pile in gubbalala.jpg"
-                  alt="Documented waste accumulation"
-                  class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
-                  onclick="openModal(this.src, this.alt)"
-                />
-              </div>
-              <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 1: Waste accumulation documented on roadside
+              <div class="grid grid-cols-1 gap-4">
+                <div>
+                  <div class="aspect-[4/3] overflow-hidden rounded">
+                    <img
+                      src="images/garbage pile in gubbalala.jpg"
+                      alt="Documented waste accumulation"
+                      class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
+                      onclick="openModal(this.src, this.alt)"
+                    />
+                  </div>
+                  <div class="font-mono text-xs text-slate-500 mt-2">
+                    Fig. 1.1: Waste accumulation documented on roadside
+                  </div>
+                </div>
+                <div>
+                  <div class="aspect-[4/3] overflow-hidden rounded">
+                    <img
+                      src="images/gubbalala-road-30-jan-2026-optimized.jpg"
+                      alt="Gubbalala road with visible waste accumulation - 30 Jan 2026"
+                      class="w-full h-full object-cover img-documentary cursor-pointer hover:opacity-90 transition-opacity"
+                      onclick="openModal(this.src, this.alt)"
+                    />
+                  </div>
+                  <div class="font-mono text-xs text-slate-500 mt-2">
+                    Fig. 1.2: Gubbalala road conditions (30 Jan 2026)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Stage 2: Burning Activity -->
+        <!-- STAGE:2-BURNING-ACTIVITY:START -->
         <div class="timeline-item">
           <div class="grid md:grid-cols-2 gap-8 items-start">
             <div class="md:order-2">
@@ -506,7 +523,7 @@
           </div>
         </div>
 
-        <!-- Stage 3: Smoke Dispersion -->
+        <!-- STAGE:3-SMOKE-DISPERSION:START -->
         <div class="timeline-item">
           <div>
             <h3 class="font-sans text-2xl font-semibold text-slate-900 mb-2">
@@ -655,7 +672,7 @@
           </div>
         </div>
 
-        <!-- Stage 4: Evening/Night Activity -->
+        <!-- STAGE:4-EVENING-NIGHT:START -->
         <div class="timeline-item">
           <div class="grid md:grid-cols-2 gap-8 items-start">
             <div>
@@ -704,7 +721,7 @@
         </div>
       </section>
 
-      <!-- Environmental Context -->
+      <!-- SECTION:ENVIRONMENTAL-CONTEXT:START -->
       <section class="mb-20">
         <div class="mb-8 sticky-header -mx-4 px-4">
           <div class="section-label mb-4">Environmental Analysis</div>
@@ -763,7 +780,7 @@
         </div>
       </section>
 
-      <!-- Visual Evidence: Before & After -->
+      <!-- SECTION:VISUAL-EVIDENCE-BEFORE-AFTER:START -->
       <section
         class="mb-20 bg-slate-50 border-y border-slate-200 py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16"
       >
@@ -781,10 +798,10 @@
               ಮೊದಲು ಮತ್ತು ನಂತರದ ದಾಖಲಾತಿ
             </p>
           </div>
-          
+
           <p class="font-sans text-base text-slate-700 max-w-3xl mb-8">
-            Visual comparison showing the dramatic change in air quality
-            between clear and polluted days.
+            Visual comparison showing the dramatic change in air quality between
+            clear and polluted days.
           </p>
 
           <!-- Image Comparison Slider -->
@@ -929,7 +946,7 @@
         </div>
       </section>
 
-      <!-- Health Impact -->
+      <!-- SECTION:HEALTH-IMPACT:START -->
       <section class="mb-20">
         <div class="max-w-5xl">
           <div class="mb-8 sticky-header -mx-4 px-4">
@@ -1000,7 +1017,7 @@
         </div>
       </section>
 
-      <!-- Geolocation Evidence -->
+      <!-- SECTION:GEOLOCATION-EVIDENCE:START -->
       <section class="mb-20">
         <div class="max-w-6xl">
           <div class="mb-8 sticky-header -mx-4 px-4">
@@ -1054,7 +1071,7 @@
         </div>
       </section>
 
-      <!-- Google Maps Evidence -->
+      <!-- SECTION:GOOGLE-MAPS-EVIDENCE:START -->
       <section class="mb-20">
         <div class="max-w-6xl">
           <div class="mb-8 sticky-header -mx-4 px-4">
@@ -1070,7 +1087,7 @@
               ಗೂಗಲ್ ನಕ್ಷೆ ವಾಯು ಗುಣಮಟ್ಟ ಮಾಹಿತಿ
             </p>
           </div>
-          
+
           <div class="mb-8">
             <p class="font-sans text-base text-slate-700 max-w-3xl">
               Independent third-party data from Google Maps corroborates the air
@@ -1103,7 +1120,7 @@
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 6.1: Google Maps AQI overlay
+                Fig. 6.1: Google Maps AQI overlay (Desktop)
               </div>
             </div>
             <div
@@ -1125,7 +1142,51 @@
                 />
               </div>
               <div class="font-mono text-xs text-slate-500 mt-2">
-                Fig. 6.2: AQI layer detail view
+                Fig. 6.2: AQI layer detail view (Desktop)
+              </div>
+            </div>
+            <div
+              class="cursor-pointer"
+              onclick="
+                openModal(
+                  'images/google-maps-aqi-layer-optimized.jpg',
+                  'Google Maps AQI Layer - Mobile View',
+                )
+              "
+            >
+              <div
+                class="aspect-[9/16] overflow-hidden rounded border border-slate-200"
+              >
+                <img
+                  src="images/google-maps-aqi-layer-optimized.jpg"
+                  alt="Google Maps AQI Layer mobile screenshot"
+                  class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity"
+                />
+              </div>
+              <div class="font-mono text-xs text-slate-500 mt-2">
+                Fig. 6.3: Google Maps AQI overlay (Mobile)
+              </div>
+            </div>
+            <div
+              class="cursor-pointer"
+              onclick="
+                openModal(
+                  'images/apple-maps-optimized.jpg',
+                  'Apple Maps - Gubbalala Location',
+                )
+              "
+            >
+              <div
+                class="aspect-[9/16] overflow-hidden rounded border border-slate-200"
+              >
+                <img
+                  src="images/apple-maps-optimized.jpg"
+                  alt="Apple Maps showing Gubbalala location"
+                  class="w-full h-full object-cover img-evidence hover:opacity-90 transition-opacity"
+                />
+              </div>
+              <div class="font-mono text-xs text-slate-500 mt-2">
+                Fig. 6.4: Apple Maps location verification
               </div>
             </div>
           </div>
@@ -1149,13 +1210,13 @@
               />
             </div>
             <div class="font-mono text-xs text-slate-500 mt-2">
-              Fig. 6.3: Geographic location overview
+              Fig. 6.5: Geographic location overview
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Community Documentation -->
+      <!-- SECTION:COMMUNITY-DOCUMENTATION:START -->
       <section class="mb-20">
         <div class="max-w-5xl">
           <div class="mb-8 sticky-header -mx-4 px-4">
@@ -1185,7 +1246,7 @@
             </p>
           </div>
 
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
             <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
               <h4 class="font-sans font-semibold text-slate-900 mb-3">
                 Documentation Methods
@@ -1207,10 +1268,40 @@
               </p>
             </div>
           </div>
+
+          <div class="mt-8">
+            <h4 class="font-sans text-xl font-semibold text-slate-900 mb-3">
+              Recent Video Documentation
+            </h4>
+            <p
+              class="font-sans text-base kannada text-slate-600 mb-4 font-medium"
+            >
+              ಇತ್ತೀಚಿನ ವೀಡಿಯೊ ದಾಖಲೆ
+            </p>
+            <div class="border-2 border-slate-300 rounded overflow-hidden">
+              <video controls class="w-full" preload="metadata">
+                <source
+                  src="images/gubbalala 2 feb 2026.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="font-mono text-xs text-slate-500 mt-2">
+              Video: Current conditions in Gubbalala (2 Feb 2026) - 18 seconds
+            </div>
+            <p class="font-sans text-sm text-slate-600 mt-3">
+              This recent footage shows the current state of the area, providing
+              visual context to the ongoing situation.
+            </p>
+            <p class="font-sans text-sm kannada text-slate-600 mt-1">
+              ಈ ಇತ್ತೀಚಿನ ದೃಶ್ಯಾವಳಿ ಪ್ರದೇಶದ ಪ್ರಸ್ತುತ ಸ್ಥಿತಿಯನ್ನು ತೋರಿಸುತ್ತದೆ.
+            </p>
+          </div>
         </div>
       </section>
 
-      <!-- Community Cooperation -->
+      <!-- SECTION:COMMUNITY-COOPERATION:START -->
       <section class="mb-20">
         <div class="max-w-5xl">
           <div class="mb-8 sticky-header -mx-4 px-4">
@@ -1365,7 +1456,9 @@
                   <span>Join WhatsApp Group</span>
                 </div>
               </a>
-              <p class="font-sans text-xs kannada text-green-700 mt-3 font-medium">
+              <p
+                class="font-sans text-xs kannada text-green-700 mt-3 font-medium"
+              >
                 WhatsApp ಗುಂಪಿಗೆ ಸೇರಿ
               </p>
             </div>
@@ -1373,7 +1466,7 @@
         </div>
       </section>
 
-      <!-- Awareness & Action -->
+      <!-- SECTION:AWARENESS-ACTION:START -->
       <section
         class="mb-20 bg-blue-50 border-y-2 border-blue-200 py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16"
       >
@@ -1405,7 +1498,7 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- LAYOUT:FOOTER:START -->
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
       <div class="container mx-auto px-4 text-center">
         <p class="font-sans text-sm mb-2">
@@ -1420,7 +1513,7 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS:START -->
     <script>
       // Image Modal Functions
       let isZoomed = false;
